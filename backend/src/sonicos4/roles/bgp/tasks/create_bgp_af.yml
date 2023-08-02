@@ -1,0 +1,9 @@
+- name: Create BGP AF configuration
+  dellemc.enterprise_sonic.sonic_bgp_af:
+    config: "{{sonic_bgp_af}}"
+  when: sonic_bgp_af is defined and sonic_bgp_af
+
+- name: Create BGP AF configuration
+  dellemc.enterprise_sonic.sonic_bgp_af:
+    config: "{{sonic_bgp_af}}"
+  when: sonic_bgp_af is defined and sonic_bgp_af

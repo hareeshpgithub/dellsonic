@@ -1,0 +1,220 @@
+# Management IP
+management_ip: 10.205.12.23
+
+# Host Name
+host_name: 6bb383a8bccfc90e6dad6bb383a8bccfc90e6dad
+
+# Loopback
+sonic_l3_loopback_interfaces:
+sonic_loopback_interface_ids:
+sonic_loopback_interfaces:
+
+# Vlan
+sonic_vlans:
+  - vlan_id: 50
+    description: <<L2_Vlan>>
+  - vlan_id: 71
+    description: <<Management_vlan>>
+  - vlan_id: 100
+    description: <<L2_INT_NIPS_PBR>>
+sonic_vlan_ids:
+sonic_l3_vlan:
+
+sonic_vlan_ids_mclag:
+  - name: Vlan50
+
+# Interface Ethernet
+sonic_interfaces_eth:
+  - name: Eth1/1
+    mtu: 9100
+  - name: Eth1/2
+    mtu: 9100
+  - name: Eth1/3
+    mtu: 9100
+  - name: Eth1/4
+    mtu: 9100
+  - name: Eth1/5
+    mtu: 9100
+  - name: Eth1/6
+    mtu: 9100
+  - name: Eth1/7
+    mtu: 9100
+  - name: Eth1/8
+    mtu: 9100
+  - name: Eth1/9
+    mtu: 9100
+  - name: Eth1/10
+    mtu: 9100
+  - name: Eth1/11
+    mtu: 9100
+  - name: Eth1/12
+    mtu: 9100
+  - name: Eth1/13
+    mtu: 1500
+  - name: Eth1/14
+    description: <<Connected_To_INDHYINTICSW2_Eth1/14:R09_To_INDHYCISCONIPS01_Eth2/1/2:R09>>
+    mtu: 1500
+  - name: Eth1/15
+    description: <<Connected_To_INDHYINTICSW2_Eth1/15:R09_To_INDHYCISCONIPS02_Eth2/1/2:R08>>
+    mtu: 1500
+  - name: Eth1/16
+    mtu: 9100
+  - name: Eth1/17
+    description: <<Connected_To_INDHYINTICSW2_Eth1/17:R09_To_INDHYINTFW02_Lan1:R09>>
+    mtu: 1500
+  - name: Eth1/18
+    mtu: 1500
+  - name: Eth1/19
+    mtu: 9100
+  - name: Eth1/20
+    mtu: 9100
+  - name: Eth1/21
+    mtu: 9100
+  - name: Eth1/22
+    mtu: 9100
+  - name: Eth1/23
+    mtu: 9100
+  - name: Eth1/24
+    description: <<Connected_To_INDHYINTICSW2_Eth1/24_R08_To_INDHYINTICSW2_Eth1/24_R09>>
+    mtu: 1500
+  - name: Eth1/25
+    mtu: 9100
+  - name: Eth1/26
+    mtu: 9100
+  - name: Eth1/27
+    mtu: 9100
+  - name: Eth1/28
+    mtu: 9100
+sonic_l3_ethernet_interfaces:
+sonic_interfaces_eth_ids:
+  - name: Eth1/1
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/2
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/3
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/4
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/5
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/6
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/7
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/8
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/9
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/10
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/11
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/12
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/13
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/14
+    configs:
+      - speed 10000
+      - no shutdown
+      - switchport access Vlan 100
+  - name: Eth1/15
+    configs:
+      - speed 10000
+      - no shutdown
+      - switchport access Vlan 100
+  - name: Eth1/16
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/17
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport access Vlan 100
+  - name: Eth1/18
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/19
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/20
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/21
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/22
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/23
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/24
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 1-4094
+  - name: Eth1/25
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/26
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/27
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/28
+    configs:
+      - speed 100000
+      - shutdown
+
+# BGP Server
+bgp_asn: bgp_router_id: sonic_bgp:
+  - bgp_as: '{{ bgp_asn }}'
+    router_id: '{{ bgp_router_id }}'
+sonic_bgp_af:
+  - bgp_as: '{{ bgp_asn }}'
+    address_family:
+      afis:
+sonic_bgp_neighbors:
+  - bgp_as: '{{ bgp_asn }}'
+sonic_bgp_af_extra:
+sonic_bgp_neighbors_af:
+sonic_bgp_neighbors_af_extra:
+

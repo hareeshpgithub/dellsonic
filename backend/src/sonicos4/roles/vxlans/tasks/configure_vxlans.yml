@@ -1,0 +1,4 @@
+- name: "sonic_vxlans configuration"
+  dellemc.enterprise_sonic.sonic_vxlans:
+    config: "{{sonic_vxlans}}"
+  when: sonic_vxlans is defined and sonic_vxlans    

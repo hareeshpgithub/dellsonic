@@ -1,0 +1,7 @@
+- name: "Configure Spanning Tree"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: sonic_spanning_tree.j2
+    save: true
+  when: sonic_spanning_tree is defined and sonic_spanning_tree

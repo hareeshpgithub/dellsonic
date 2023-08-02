@@ -1,0 +1,119 @@
+- name: Configure Dell SonicOS Switch
+  hosts: inventory
+  gather_facts: False
+  connection: httpapi
+  collections:
+    - dellemc.enterprise_sonic
+
+  tasks:
+    - name: Get System Variables
+      include_role:
+        name: get_variables
+
+    - name: Backup Latest Configuration Before Backup
+      include_role:
+        name: backup_inventory
+      vars:
+        file_name: "{{backup_before_config}}"
+
+    - name: Run OS Hardening
+      include_role:
+        name: os_hardening
+
+    - name: Configure Port Breakout
+      include_role:
+        name: port_breakout
+
+    - name: Configure Interface Vlan
+      include_role:
+        name: vlans
+
+    - name: Configure Spanning Tree Vlan
+      include_role:
+        name: spanning_tree
+
+    - name: Configure Interface Loopback
+      include_role:
+        name: loopback_interface
+
+    - name: Configure Interface Portchannels
+      include_role:
+        name: port_channels
+
+    - name: Configure Mclag
+      include_role:
+        name: mclag
+
+    - name: Configure Ethernet
+      include_role:
+        name: ethernet
+
+    - name: Configure Prefix List
+      include_role:
+        name: prefix_list
+
+    - name: Configure Route Maps
+      include_role:
+        name: route_maps
+
+    - name: Configure BGP
+      include_role:
+        name: bgp
+
+    - name: Configure router ospf
+      include_role:
+        name: router_ospf
+
+    - name: Configure Vxlans
+      include_role:
+        name: vxlans
+
+    - name: Configure Ip Access-List
+      include_role:
+        name: ip_access_list
+
+    - name: Configure Ip Access-List
+      include_role:
+        name: ip_routes
+
+    - name: Configure Logging Server
+      include_role:
+        name: logging_server
+
+    - name: Configure Users
+      include_role:
+        name: users
+
+    - name: Configure Users
+      include_role:
+        name: sflow
+
+    - name: Configure NTP Server
+      include_role:
+        name: ntp
+
+    - name: Configure Bfd_Peer
+      include_role:
+        name: bfd_peer
+
+    - name: Configure AAA
+      include_role:
+        name: aaa
+
+    - name: Configure VRF
+      include_role:
+        name: vrfs
+
+    - name: Configure Tacacs Server
+      include_role:
+        name: tacacs_server
+
+    - name: Configure Snmp Server
+      include_role:
+        name: snmp_server
+
+    - name: Backup Latest Configuration After Backup
+      include_role:
+        name: backup_inventory
+      vars:
+        file_name: "{{backup_after_config}}"

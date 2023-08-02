@@ -1,0 +1,8 @@
+---
+- name: "associate mclag with portchannel"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: associate_mclag_po.j2
+    save: true
+  when: sonic_portchannels_ids is defined and sonic_portchannels_ids

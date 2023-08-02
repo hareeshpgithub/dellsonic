@@ -1,0 +1,1400 @@
+# This file contains confidential and proprietary information. 
+# Unauthorized use, reproduction, or distribution may result in legal penalties.
+# Date & Time: 02-08-2023 11:12:48
+
+===   VERSION INFORMATION   ===
+Software Version  : 4.0.5-Enterprise_Base
+Product           : Enterprise SONiC Distribution by Dell Technologies
+Distribution      : Debian 10.13
+Kernel            : 4.19.0-9-2-amd64
+Config DB Version : version_4_0_2
+Build Commit      : bd4c530f0
+Build Date        : Thu Feb 23 21:43:31 UTC 2023
+Built By          : sonicbld@sonic-lvn-csg-001
+Platform          : x86_64-kvm_x86_64-r0
+HwSKU             : DellEMC-S5248f-P-25G-DPB
+ASIC              : vs
+Serial Number     : 000000
+Uptime            : 11:13:00 up 3:51, 1 user, load average: 6.00, 6.09, 6.08 
+ 
+REPOSITORY                              TAG                                     IMAGE ID            SIZE
+docker-database                         4.0.5-Enterprise_Base                   83068bda4b46        349MB
+docker-database                         latest                                  83068bda4b46        349MB
+docker-dhcp-relay                       4.0.5-Enterprise_Base                   b77ce0eef496        386MB
+docker-dhcp-relay                       latest                                  b77ce0eef496        386MB
+docker-eventd                           4.0.5-Enterprise_Base                   a44bf4f96728        350MB
+docker-eventd                           latest                                  a44bf4f96728        350MB
+docker-fpm-frr                          4.0.5-Enterprise_Base                   b3081ec93a23        408MB
+docker-fpm-frr                          latest                                  b3081ec93a23        408MB
+docker-gbsyncd-vs                       4.0.5-Enterprise_Base                   102baeacd06f        349MB
+docker-gbsyncd-vs                       latest                                  102baeacd06f        349MB
+docker-iccpd                            4.0.5-Enterprise_Base                   8452793c9eca        387MB
+docker-iccpd                            latest                                  8452793c9eca        387MB
+docker-l2mcd                            4.0.5-Enterprise_Base                   4f2f2657f260        384MB
+docker-l2mcd                            latest                                  4f2f2657f260        384MB
+docker-lldp                             4.0.5-Enterprise_Base                   2663d4c03799        423MB
+docker-lldp                             latest                                  2663d4c03799        423MB
+docker-macsec                           4.0.5-Enterprise_Base                   b678cf1edb9f        364MB
+docker-macsec                           latest                                  b678cf1edb9f        364MB
+docker-nat                              4.0.5-Enterprise_Base                   8f29ce7996b7        386MB
+docker-nat                              latest                                  8f29ce7996b7        386MB
+docker-orchagent                        4.0.5-Enterprise_Base                   68e2ee150728        380MB
+docker-orchagent                        latest                                  68e2ee150728        380MB
+docker-platform-monitor                 4.0.5-Enterprise_Base                   601b0551fb41        559MB
+docker-platform-monitor                 latest                                  601b0551fb41        559MB
+docker-router-advertiser                4.0.5-Enterprise_Base                   dde4f5ea61db        349MB
+docker-router-advertiser                latest                                  dde4f5ea61db        349MB
+docker-sflow                            4.0.5-Enterprise_Base                   86d397bc7734        386MB
+docker-sflow                            latest                                  86d397bc7734        386MB
+docker-snmp                             4.0.5-Enterprise_Base                   ff8f537e940e        372MB
+docker-snmp                             latest                                  ff8f537e940e        372MB
+docker-sonic-mgmt-framework             4.0.5-Enterprise_Base                   25f55c6758bb        580MB
+docker-sonic-mgmt-framework             latest                                  25f55c6758bb        580MB
+docker-sonic-telemetry                  4.0.5-Enterprise_Base                   a003ddd1fdd2        525MB
+docker-sonic-telemetry                  latest                                  a003ddd1fdd2        525MB
+docker-stp                              4.0.5-Enterprise_Base                   b72bb83c40c2        387MB
+docker-stp                              latest                                  b72bb83c40c2        387MB
+docker-syncd-vs                         4.0.5-Enterprise_Base                   a96595873dc4        356MB
+docker-syncd-vs                         latest                                  a96595873dc4        356MB
+docker-tam                              4.0.5-Enterprise_Base                   0971c72b1a02        433MB
+docker-tam                              latest                                  0971c72b1a02        433MB
+docker-teamd                            4.0.5-Enterprise_Base                   f3beca130050        384MB
+docker-teamd                            latest                                  f3beca130050        384MB
+docker-udld                             4.0.5-Enterprise_Base                   88e105ae60e5        388MB
+docker-udld                             latest                                  88e105ae60e5        388MB
+docker-vrrp                             4.0.5-Enterprise_Base                   a3cf4228bc30        396MB
+docker-vrrp                             latest                                  a3cf4228bc30        396MB
+
+===    SYSTEM INFORMATION   ===
+-----------------------------------------------------------
+Attribute            Value/State
+-----------------------------------------------------------
+Boot Time           :03:51:16
+Current Datetime    :2023-08-02T11:13:03+05:30
+Hostname            :INDMYOOBCESW01
+
+===   BACKUP CONFIGURATION  ===
+!
+ip load-share hash ipv4 ipv4-src-ip
+ip load-share hash ipv4 ipv4-dst-ip
+ip load-share hash ipv4 ipv4-ip-proto
+ip load-share hash ipv4 ipv4-l4-dst-port
+ip load-share hash ipv4 ipv4-l4-src-port
+ip load-share hash ipv6 ipv6-src-ip
+ip load-share hash ipv6 ipv6-dst-ip
+ip load-share hash ipv6 ipv6-next-hdr
+ip load-share hash ipv6 ipv6-l4-src-port
+ip load-share hash ipv6 ipv6-l4-dst-port
+username swadmin role admin
+ 
+mac address-table aging-time 600
+kdump enable
+kdump memory 0M-2G:256M,2G-4G:256M,4G-8G:384M,8G-:448M
+kdump num-dumps 3
+clock timezone Asia/Kolkata
+interface-naming standard
+core enable
+factory default profile l3 confirm
+port-group 1 speed 25000
+port-group 2 speed 25000
+port-group 3 speed 25000
+port-group 4 speed 25000
+port-group 5 speed 25000
+port-group 6 speed 25000
+port-group 7 speed 25000
+port-group 8 speed 25000
+port-group 9 speed 25000
+port-group 10 speed 25000
+port-group 11 speed 25000
+port-group 12 speed 25000
+logging server 10.205.11.21 remote-port 514
+logging server 10.205.11.32 remote-port 514
+logging server 10.205.11.87 remote-port 514
+logging server 10.205.11.241 remote-port 514
+! 
+!
+nat
+ timeout 600
+ tcp-timeout 86400
+ udp-timeout 300
+!
+tam
+!
+qos scheduler-policy copp-scheduler-policy
+ !
+ queue 0
+  type wrr
+  weight 1
+ !
+ queue 1
+  meter-type packets
+  pir 100
+  type wrr
+  weight 1
+ !
+ queue 2
+  meter-type packets
+  pir 600
+  type wrr
+  weight 2
+ !
+ queue 3
+  meter-type packets
+  pir 8000
+  type wrr
+  weight 1
+ !
+ queue 4
+  meter-type packets
+  pir 500
+  type wrr
+  weight 1
+ !
+ queue 5
+  meter-type packets
+  pir 300
+  type wrr
+  weight 1
+ !
+ queue 6
+  meter-type packets
+  pir 2000
+  type wrr
+  weight 2
+ !
+ queue 7
+  meter-type packets
+  pir 6000
+  type wrr
+  weight 2
+ !
+ queue 8
+  meter-type packets
+  pir 1000
+  type wrr
+  weight 2
+ !
+ queue 9
+  meter-type packets
+  pir 300
+  type wrr
+  weight 2
+ !
+ queue 10
+  meter-type packets
+  pir 3000
+  type wrr
+  weight 2
+ !
+ queue 11
+  meter-type packets
+  pir 3000
+  type wrr
+  weight 2
+ !
+ queue 12
+  meter-type packets
+  pir 2000
+  type wrr
+  weight 2
+ !
+ queue 13
+  meter-type packets
+  pir 5000
+  type wrr
+  weight 2
+ !
+ queue 14
+  meter-type packets
+  pir 10000
+  type wrr
+  weight 6
+ !
+ queue 15
+  meter-type packets
+  pir 5000
+  type wrr
+  weight 4
+ !
+ queue 16
+  meter-type packets
+  pir 5000
+  type wrr
+  weight 4
+ !
+ queue 17
+  meter-type packets
+  pir 500
+  type wrr
+  weight 2
+ !
+ queue 18
+  meter-type packets
+  pir 500
+  type wrr
+  weight 2
+ !
+ queue 19
+  meter-type packets
+  pir 5000
+  type wrr
+  weight 3
+ !
+ queue 20
+  meter-type packets
+  pir 1500
+  type wrr
+  weight 10
+ !
+ queue 21
+  meter-type packets
+  pir 16000
+  type wrr
+  weight 30
+ !
+ queue 22
+  meter-type packets
+  pir 500
+  type wrr
+  weight 10
+ !
+ queue 23
+  meter-type packets
+  pir 500
+  type wrr
+  weight 10
+ !
+ port
+  meter-type packets
+!
+hardware
+ !
+ access-list
+  counters per-entry
+ !
+ tcam
+!
+line vty
+ service-policy type qos in oob-qos-policy
+!
+interface Vlan10
+ description <<SYN_VRF_MGMT>>
+!
+interface Vlan54
+ description <<VLAN0054>>
+!
+interface Vlan55
+ description <<VLAN0055>>
+!
+interface Vlan56
+ description <<VLAN0056>>
+!
+interface Vlan71
+ description mgmt_vlan
+ ip address 10.205.142.42/24
+!
+interface Vlan91
+ description <<Matrix_Deployment>>
+!
+interface Vlan100
+ description <<DB_HB_VLAN>>
+!
+interface Vlan150
+ description <<AppLB_External_Vlan>>
+!
+interface Vlan160
+ description <<APPLB_Internal_Vlan>>
+!
+interface Vlan200
+ description <<Replication_Interconnect_Seg>>
+!
+interface Vlan201
+ description <<SFTP_Server>>
+!
+interface Vlan202
+ description <<HCP>>
+!
+interface Vlan203
+ description <<HNAS>>
+!
+interface Vlan204
+ description <<NET_Backup>>
+!
+interface Vlan210
+ description <<Staging_Web_TEMT>>
+!
+interface Vlan211
+ description <<Staging_Application_TEMT>>
+!
+interface Vlan212
+ description <<Staging_DB_TEMT>>
+!
+interface Vlan213
+ description <<Pre_Prod_Web_TEMT>>
+!
+interface Vlan214
+ description <<Pre_Prod_Application_TEMT>>
+!
+interface Vlan215
+ description <<Pre_Prod_DB_TEMT>>
+!
+interface Vlan216
+ description <<Automation_Testing>>
+!
+interface Vlan217
+ description <<ASED_DB>>
+!
+interface Vlan218
+ description <<ASED_Prod_DB>>
+!
+interface Vlan219
+ description <<DB_Monitoring_Vlan>>
+!
+interface Vlan220
+ description <<Staging_Application_TEMT_02>>
+!
+interface Vlan221
+ description <<Pre_Prod_Application_TEMT_02>>
+!
+interface Vlan222
+ description <<Prod_Web_TEMT>>
+!
+interface Vlan223
+ description <<Prod_Application_TEMT>>
+!
+interface Vlan224
+ description <<Prod_DB_TEMT>>
+!
+interface Vlan229
+ description <<APP_TEMT_POC>>
+!
+interface Vlan300
+ description <<Jira_APP>>
+!
+interface Vlan301
+ description <<JIRA_UAT_APP>>
+!
+interface Vlan302
+ description <<TradeEdge_MDZ_Prod_WEB>>
+!
+interface Vlan303
+ description <<TradeEdge_MDZ_Prod_DB>>
+!
+interface Vlan305
+ description <<Jira_Staging_APP>>
+!
+interface Vlan306
+ description <<Jira_Staging_DB>>
+!
+interface Vlan307
+ description <<NIAGST>>
+!
+interface Vlan308
+ description <<GSTN_web>>
+!
+interface Vlan309
+ description <<TradeEdge_Training_WEB>>
+!
+interface Vlan310
+ description <<TradeEdge_Training_APP>>
+!
+interface Vlan311
+ description <<TradeEdge_Training_DB>>
+!
+interface Vlan312
+ description <<EVFN_Stageweb>>
+!
+interface Vlan314
+ description <<EVFN_StageDB>>
+!
+interface Vlan315
+ description <<EVFN_Prodweb>>
+!
+interface Vlan316
+ description <<EVFN_ProdAPP>>
+!
+interface Vlan317
+ description <<EVFN_ProdDB>>
+!
+interface Vlan318
+ description <<UAT_WEB>>
+!
+interface Vlan319
+ description <<UAT_DB>>
+!
+interface Vlan320
+ description <<UAT_APP>>
+!
+interface Vlan321
+ description <<EV_CA>>
+!
+interface Vlan322
+ description <<FINANZTOOLS_WEB>>
+!
+interface Vlan323
+ description <<FINANZTOOLS_APP>>
+!
+interface Vlan324
+ description <<FINANZTOOLS_DB>>
+!
+interface Vlan325
+ description <<EDGEVERVE_WEB>>
+!
+interface Vlan326
+ description <<EDGEVERVE_DB>>
+!
+interface Vlan327
+ description <<EV_ICICI_FINAPP>>
+!
+interface Vlan328
+ description <<EV_ICICI_FINDB>>
+!
+interface Vlan329
+ description <<EV_MLP_DB>>
+!
+interface Vlan330
+ description <<Kone_DB>>
+!
+interface Vlan331
+ description <<DHL_DB_Vlan>>
+!
+interface Vlan332
+ description <<Blockchain_POC>>
+!
+interface Vlan333
+ description <<Kone_WEB>>
+!
+interface Vlan334
+ description <<GSTN_APP>>
+!
+interface Vlan335
+ description <<DIGITRANS_prodweb>>
+!
+interface Vlan336
+ description <<DIGITRANS_prodapp>>
+!
+interface Vlan337
+ description <<DIGITRANS_prodDB>>
+!
+interface Vlan338
+ description <<DIGITRANS_pre_prodweb>>
+!
+interface Vlan339
+ description <<DIGITRANS_pre_prodapp>>
+!
+interface Vlan340
+ description <<DIGITRANS_pre_prodDB>>
+!
+interface Vlan341
+ description <<Gemalto_Key_Secure>>
+!
+interface Vlan342
+ description <<Cloud_JAMF>>
+!
+interface Vlan343
+ description <<Cloud_JAMF>>
+!
+interface Vlan344
+ description <<JIRA_Production_APP>>
+!
+interface Vlan345
+ description <<JIRA_Production_DB>>
+!
+interface Vlan346
+ description <<MSSQL_DB>>
+!
+interface Vlan352
+ description <<LEAP_APP>>
+!
+interface Vlan353
+ description <<LEAP_DB>>
+!
+interface Vlan354
+ description <<LEAP-Mckesson-PROD-APP>>
+!
+interface Vlan355
+ description <<LEAP-Mckesson-PROD-DB>>
+!
+interface Vlan356
+ description <<LEAP-Mckesson-SIT-APP>>
+!
+interface Vlan357
+ description <<LEAP-Mckesson-SIT-DB>>
+!
+interface Vlan360
+ description <<OPENSHIFT>>
+!
+interface Vlan361
+ description <<NetApp_Storage_Grid>>
+!
+interface Vlan362
+ description <<NetApp_Storage_LB>>
+!
+interface Vlan365
+ description <<ICMS-APP>>
+!
+interface Vlan366
+ description <<StorageOnce_federation>>
+!
+interface Vlan367
+ description <<Anthos>>
+!
+interface Vlan368
+ description <<Anthos_Ext>>
+!
+interface Vlan369
+ description <<Anthos_Mgmt>>
+!
+interface Vlan370
+ description <<Finacle>>
+!
+interface Vlan371
+ description <<Nutanix_MGMT_Vlan>>
+!
+interface Vlan372
+ description <<Nutanix_VM_Vlan>>
+!
+interface Vlan404
+ description <<VLAN0404>>
+!
+interface Vlan448
+ description <<DEll_Test_VlanL3>>
+!
+interface Vlan449
+ description <<coretodell>>
+!
+interface Vlan505
+ description <<Prod_Openstack>>
+!
+interface Vlan550
+ description <<Nexus_To_Mellanox_Uplink>>
+!
+interface Loopback 0
+ ip address 10.205.10.16/32
+!
+interface PortChannel 20
+ description Connected-to-INDHYAPPMGSW01&INDHYAPPMGSW02
+ switchport trunk allowed Vlan 1-4094
+ no shutdown
+!
+interface PortChannel 41 mode active
+ description <<Connected_to_INDHYDPRDAHV01_Ports_Eth2_ETH1/25>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 42 mode active
+ description <<Connected_to_INDHYDPRDAHV01_Ports_Eth1_ETH1/26>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 43 mode active
+ description <<Connected_to_INDHYDPRDAHV02_Ports_Eth2_ETH1/27>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 44 mode active
+ description <<Connected_to_INDHYDPRDAHV02_Ports_Eth1_ETH1/28>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 45 mode active
+ description <<Connected_to_INDHYDPRDAHV03_Ports_Eth2_ETH1/29>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 46 mode active
+ description <<Connected_to_INDHYDPRDAHV03_Ports_Eth1_ETH1/30>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 47 mode active
+ description <<Connected_to_INDHYDPRDAHV04_Ports_Eth2_ETH1/31>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 48 mode active
+ description <<Connected_to_INDHYDPRDAHV04_Ports_Eth1_ETH1/32>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 49 mode active
+ description <<Connected_to_INDHYDPRDAHV05_Ports_Eth2_ETH1/33>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 50 mode active
+ description <<Connected_to_INDHYDPRDAHV05_Ports_Eth1_ETH1/34>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 51 mode active
+ description <<Connected_to_INDHYDPRDAHV06_Ports_Eth2_ETH1/35>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 52 mode active
+ description <<Connected_to_INDHYDPRDAHV06_Ports_Eth1_ETH1/36>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 53 mode active
+ description <<Connected_to_INDHYDPRDAHV07_Ports_Eth2_ETH1/37>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 54 mode active
+ description <<Connected_to_INDHYDPRDAHV07_Ports_Eth1_ETH1/38>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 55 mode active
+ description <<Connected_to_INDHYDPRDAHV08_Ports_Eth2_ETH1/39>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 56 mode active
+ description <<Connected_to_INDHYDPRDAHV08_Ports_Eth1_ETH1/40>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 57 mode active
+ description <<Connected_to_INDHYDPRDAHV09_Ports_Eth2_ETH1/41>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 58 mode active
+ description <<Connected_to_INDHYDPRDAHV09_Ports_Eth1_ETH1/42>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 59 mode active
+ description <<Connected_to_INDHYDPRDAHV010_Ports_Eth2_ETH1/43>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 60 mode active
+ description <<Connected_to_INDHYDPRDAHV010_Ports_Eth1_ETH1/44>>
+ switchport access Vlan 371
+ switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+ no shutdown
+!
+interface PortChannel 100
+ description <<Peer-LINKS>>
+ switchport trunk allowed Vlan 1-4094
+ no shutdown
+!
+interface PortChannel 201 mode active
+ description <<INDHYAPPFW01_Ports_Eth1/1.Eth1/2>>
+ switchport trunk allowed Vlan 150,160,201-204,210-231,300-303,305-346,348-350,352-357,360-363,365-372,400,410-412,448-449
+ mtu 1500
+ no shutdown
+!
+interface PortChannel 202 mode active
+ description <<INDHYAPPFW02_Ports_Eth1/3.Eth1/4>>
+ switchport trunk allowed Vlan 150,160,201-204,210-231,300-303,305-346,348-350,352-357,360-363,365-372,400,410-412,448-449
+ mtu 1500
+ no shutdown
+!
+interface Management 0
+ description Management0
+ mtu 1500
+ autoneg on
+ speed 1000
+ ip address 192.168.2.12/24 gwaddr 192.168.2.1
+!
+interface Eth1/1
+ description SrcOOBCESW01_Gi0/1_R3.3A.01-DestOOBFW01_LAN1.R2.2B.001
+ mtu 9100
+ speed 25000
+ shutdown
+ switchport access Vlan 50
+!
+interface Eth1/2
+ description SrcOOBCESW01_Gi0/2_DestITILSW01_DCM_INFYFACING_FWINT_Gi1/2
+ mtu 9100
+ speed 25000
+ shutdown
+ switchport access Vlan 50
+!
+interface Eth1/3
+ description SrcOOBCESW01_Gi0/3_R3.3A.260-DestDEVMGSW01_Gi1/10_R3.3A.261
+ mtu 9100
+ speed 25000
+ shutdown
+ switchport access Vlan 71
+!
+interface Eth1/4
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/5
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/6
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/7
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/8
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/9
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/10
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/11
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/12
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/13
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/14
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/15
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/16
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/17
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/18
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/19
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/20
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/21
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/22
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/23
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/24
+ description SrcOOBCESW01_Gi0/1_R3.3A.01-DestOOBFW01_LAN1.R2.2B.001
+ mtu 9100
+ speed 25000
+ shutdown
+ switchport access Vlan 50
+!
+interface Eth1/25
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/26
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/27
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/28
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/29
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/30
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/31
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/32
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/33
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/34
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/35
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/36
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/37
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/38
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/39
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/40
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/41
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/42
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/43
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/44
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/45
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/46
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/47
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/48
+ mtu 9100
+ speed 25000
+ shutdown
+!
+interface Eth1/49
+ mtu 9100
+ speed 100000
+ shutdown
+!
+interface Eth1/50
+ mtu 9100
+ speed 100000
+ shutdown
+!
+interface Eth1/51
+ mtu 9100
+ speed 100000
+ shutdown
+!
+interface Eth1/52
+ mtu 9100
+ speed 100000
+ shutdown
+!
+interface Eth1/53
+ mtu 9100
+ speed 100000
+ shutdown
+!
+interface Eth1/54
+ mtu 9100
+ speed 100000
+ shutdown
+!
+interface Eth1/55
+ mtu 9100
+ speed 100000
+ shutdown
+!
+interface Eth1/56
+ mtu 9100
+ speed 100000
+ shutdown
+!
+ip route 0.0.0.0/0 10.205.142.1
+!
+class-map class-oob-arp match-type fields match-all
+ match ethertype arp
+!
+class-map class-oob-dhcp-client match-type fields match-all
+ match ethertype ip
+ match ip protocol udp
+ match destination-port eq 68
+!
+class-map class-oob-dhcp-server match-type fields match-all
+ match ethertype ip
+ match ip protocol udp
+ match destination-port eq 67
+!
+class-map class-oob-ip-multicast match-type fields match-all
+ match ethertype ip
+ match destination-address ip 224.0.0.0/4
+!
+class-map class-oob-ipv6-multicast match-type fields match-all
+ match ethertype 0x86DD
+ match destination-address ipv6 ff00::/8
+!
+class-map copp-system-arp match-type copp 
+ match protocol arp_req
+ match protocol arp_resp
+ match protocol neigh_discovery
+!
+class-map copp-system-bfd match-type copp 
+ match protocol bfd
+ match protocol bfdv6
+!
+class-map copp-system-bgp match-type copp 
+ match protocol bgp
+ match protocol bgpv6
+!
+class-map copp-system-dhcp match-type copp 
+ match protocol dhcp
+ match protocol dhcpv6
+!
+class-map copp-system-dhcpl2 match-type copp 
+ match protocol dhcp_l2
+ match protocol dhcpv6_l2
+!
+class-map copp-system-iccp match-type copp 
+ match protocol iccp
+!
+class-map copp-system-icmp match-type copp 
+ match protocol icmp
+ match protocol icmpv6
+!
+class-map copp-system-igmp match-type copp 
+ match protocol igmp_query
+!
+class-map copp-system-ip2me match-type copp 
+ match protocol ip2me
+!
+class-map copp-system-lacp match-type copp 
+ match protocol lacp
+!
+class-map copp-system-lldp match-type copp 
+ match protocol lldp
+!
+class-map copp-system-mtu match-type copp 
+ match protocol l3_mtu_error
+!
+class-map copp-system-nat match-type copp 
+ match protocol src_nat_miss
+ match protocol dest_nat_miss
+!
+class-map copp-system-ospf match-type copp 
+ match protocol ospf
+!
+class-map copp-system-pim match-type copp 
+ match protocol pim
+!
+class-map copp-system-ptp match-type copp 
+ match protocol ptp
+!
+class-map copp-system-sflow match-type copp 
+ match protocol sample_packet
+!
+class-map copp-system-stp match-type copp 
+ match protocol stp
+ match protocol pvrst
+!
+class-map copp-system-subnet match-type copp 
+ match protocol subnet
+!
+class-map copp-system-suppress match-type copp 
+ match protocol arp_suppress
+ match protocol nd_suppress
+!
+class-map copp-system-ttl match-type copp 
+ match protocol ttl_error
+!
+class-map copp-system-udld match-type copp 
+ match protocol udld
+!
+class-map copp-system-vrrp match-type copp 
+ match protocol vrrp
+ match protocol vrrpv6
+!
+class-map default match-type any 
+!
+copp-action copp-system-arp
+ set trap-action copy
+ set trap-queue 10
+ set trap-priority 10
+ police cir 3000 cbs 3000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-bfd
+ set trap-action trap
+ set trap-queue 20
+ set trap-priority 20
+ police cir 1500 cbs 1500
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-bgp
+ set trap-action trap
+ set trap-queue 14
+ set trap-priority 14
+ police cir 10000 cbs 10000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-dhcp
+ set trap-action trap
+ set trap-queue 9
+ set trap-priority 9
+ police cir 300 cbs 300
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-iccp
+ set trap-action trap
+ set trap-queue 16
+ set trap-priority 16
+ police cir 5000 cbs 5000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-icmp
+ set trap-action trap
+ set trap-queue 8
+ set trap-priority 8
+ police cir 1000 cbs 1000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-igmp
+ set trap-action trap
+ set trap-queue 12
+ set trap-priority 12
+ police cir 2000 cbs 2000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-ip2me
+ set trap-action trap
+ set trap-queue 7
+ set trap-priority 7
+ police cir 6000 cbs 6000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-lacp
+ set trap-action trap
+ set trap-queue 23
+ set trap-priority 23
+ police cir 500 cbs 500
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-lldp
+ set trap-action trap
+ set trap-queue 18
+ set trap-priority 18
+ police cir 500 cbs 500
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-mtu
+ set trap-action trap
+ set trap-queue 4
+ set trap-priority 4
+ police cir 500 cbs 500
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-nat
+ set trap-action trap
+ set trap-queue 5
+ set trap-priority 5
+ police cir 300 cbs 300
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-ospf
+ set trap-action copy
+ set trap-queue 15
+ set trap-priority 15
+ police cir 5000 cbs 5000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-pim
+ set trap-action trap
+ set trap-queue 13
+ set trap-priority 13
+ police cir 5000 cbs 5000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-ptp
+ set trap-action trap
+ set trap-queue 30
+ set trap-priority 30
+ police cir 5000 cbs 5000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-sflow
+ set trap-action trap
+ set trap-queue 3
+ set trap-priority 3
+ police cir 8000 cbs 8000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-stp
+ set trap-action trap
+ set trap-queue 21
+ set trap-priority 21
+ police cir 16000 cbs 16000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-subnet
+ set trap-action trap
+ set trap-queue 6
+ set trap-priority 6
+ police cir 2000 cbs 2000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-suppress
+ set trap-action trap
+ set trap-queue 11
+ set trap-priority 11
+ police cir 3000 cbs 3000
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-ttl
+ set trap-action trap
+ set trap-queue 0
+ set trap-priority 0
+ police cir 100 cbs 100
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-udld
+ set trap-action trap
+ set trap-queue 22
+ set trap-priority 22
+ police cir 500 cbs 500
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action copp-system-vrrp
+ set trap-action trap
+ set trap-queue 17
+ set trap-priority 17
+ police cir 500 cbs 500
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+copp-action default
+ set trap-queue 0
+ police cir 100 cbs 100
+ police meter-type pps
+ police mode sr_tcm red drop
+!
+policy-map copp-system-policy type copp
+ class default priority 0
+  set copp-action default
+ !
+ class copp-system-vrrp priority 0
+  set copp-action copp-system-vrrp
+ !
+ class copp-system-udld priority 0
+  set copp-action copp-system-udld
+ !
+ class copp-system-ttl priority 0
+  set copp-action copp-system-ttl
+ !
+ class copp-system-suppress priority 0
+  set copp-action copp-system-suppress
+ !
+ class copp-system-subnet priority 0
+  set copp-action copp-system-subnet
+ !
+ class copp-system-stp priority 0
+  set copp-action copp-system-stp
+ !
+ class copp-system-sflow priority 0
+  set copp-action copp-system-sflow
+ !
+ class copp-system-ptp priority 0
+  set copp-action copp-system-ptp
+ !
+ class copp-system-pim priority 0
+  set copp-action copp-system-pim
+ !
+ class copp-system-ospf priority 0
+  set copp-action copp-system-ospf
+ !
+ class copp-system-nat priority 0
+  set copp-action copp-system-nat
+ !
+ class copp-system-mtu priority 0
+  set copp-action copp-system-mtu
+ !
+ class copp-system-lldp priority 0
+  set copp-action copp-system-lldp
+ !
+ class copp-system-lacp priority 0
+  set copp-action copp-system-lacp
+ !
+ class copp-system-ip2me priority 0
+  set copp-action copp-system-ip2me
+ !
+ class copp-system-igmp priority 0
+  set copp-action copp-system-igmp
+ !
+ class copp-system-icmp priority 0
+  set copp-action copp-system-icmp
+ !
+ class copp-system-iccp priority 0
+  set copp-action copp-system-iccp
+ !
+ class copp-system-dhcpl2 priority 0
+  set copp-action copp-system-dhcp
+ !
+ class copp-system-dhcp priority 0
+  set copp-action copp-system-dhcp
+ !
+ class copp-system-bgp priority 0
+  set copp-action copp-system-bgp
+ !
+ class copp-system-bfd priority 0
+  set copp-action copp-system-bfd
+ !
+ class copp-system-arp priority 0
+  set copp-action copp-system-arp
+ !
+!
+policy-map oob-qos-policy type qos
+ description "QoS Ratelimiting policy for OOB port"
+ class class-oob-dhcp-client priority 1020
+  police cir 512000 
+ !
+ class class-oob-dhcp-server priority 1015
+  police cir 512000 
+ !
+ class class-oob-arp priority 1010
+  police cir 256000 
+ !
+ class class-oob-ipv6-multicast priority 1005
+  police cir 256000 
+ !
+ class class-oob-ip-multicast priority 1000
+  police cir 256000 
+ !
+!
+mclag domain 1
+ source-ip 169.254.4.2
+ peer-ip 169.254.4.3
+ peer-link PortChannel100
+ mclag-system-mac 00:00:00:11:11:11
+ keepalive-interval 1
+ session-timeout 30
+ delay-restore 90
+!
+ntp server 10.205.143.116 minpoll 6 maxpoll 10

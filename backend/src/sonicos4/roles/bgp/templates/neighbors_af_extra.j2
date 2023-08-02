@@ -1,0 +1,15 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{% if sonic_bgp_neighbors_af_extra is defined and sonic_bgp_neighbors_af_extra %}
+router bgp {{ bgp_asn }}
+        {% for neighbors_af_item in sonic_bgp_neighbors_af_extra %}
+            {% if 'Eth' in neighbors_af_item.neighbor %}
+ neighbor interface {{neighbors_af_item.neighbor}}
+        {% else %}
+ neighbor {{neighbors_af_item.neighbor}}
+        {% endif %}
+  address-family {{neighbors_af_item.address_family.afi}} {{neighbors_af_item.address_family.safi}}
+            {% for address_family_config in neighbors_af_item.address_family.configs %}
+   {{ address_family_config }}
+            {% endfor %}
+        {% endfor %}
+{% endif %}

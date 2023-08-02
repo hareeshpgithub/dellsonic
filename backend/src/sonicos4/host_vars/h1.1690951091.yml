@@ -1,0 +1,947 @@
+
+# This file contains confidential and proprietary information.
+# Unauthorized use, reproduction, or distribution may result in legal penalties.
+# Created: 02-Aug-2023 07:57
+host_name: INDHYAPPDELLSONICSW01
+management_ip: 10.205.12.68
+sonic_timezone: Asia/Kolkata
+loopback_inf0: LoopBack0
+loopback0_ip: 10.205.10.16/32
+sonic_l3_loopback_interfaces:
+  - name: '{{ loopback_inf0 }}'
+    ipv4:
+      addresses:
+        - address: '{{ loopback0_ip }}'
+sonic_loopback_interface_ids:
+  - lb_id: '0'
+    ipv4_address: '{{ loopback0_ip }}'
+sonic_loopback_interfaces:
+  - name: '{{ loopback_inf0 }}'
+sonic_vlans:
+  - vlan_id: 10
+    description: <<SYN_VRF_MGMT>>
+  - vlan_id: 54
+    description: <<VLAN0054>>
+  - vlan_id: 55
+    description: <<VLAN0055>>
+  - vlan_id: 56
+    description: <<VLAN0056>>
+  - vlan_id: 91
+    description: <<Matrix_Deployment>>
+  - vlan_id: 100
+    description: <<DB_HB_VLAN>>
+  - vlan_id: 150
+    description: <<AppLB_External_Vlan>>
+  - vlan_id: 160
+    description: <<APPLB_Internal_Vlan>>
+  - vlan_id: 200
+    description: <<Replication_Interconnect_Seg>>
+  - vlan_id: 201
+    description: <<SFTP_Server>>
+  - vlan_id: 202
+    description: <<HCP>>
+  - vlan_id: 203
+    description: <<HNAS>>
+  - vlan_id: 204
+    description: <<NET_Backup>>
+  - vlan_id: 210
+    description: <<Staging_Web_TEMT>>
+  - vlan_id: 211
+    description: <<Staging_Application_TEMT>>
+  - vlan_id: 212
+    description: <<Staging_DB_TEMT>>
+  - vlan_id: 213
+    description: <<Pre_Prod_Web_TEMT>>
+  - vlan_id: 214
+    description: <<Pre_Prod_Application_TEMT>>
+  - vlan_id: 215
+    description: <<Pre_Prod_DB_TEMT>>
+  - vlan_id: 216
+    description: <<Automation_Testing>>
+  - vlan_id: 217
+    description: <<ASED_DB>>
+  - vlan_id: 218
+    description: <<ASED_Prod_DB>>
+  - vlan_id: 219
+    description: <<DB_Monitoring_Vlan>>
+  - vlan_id: 220
+    description: <<Staging_Application_TEMT_02>>
+  - vlan_id: 221
+    description: <<Pre_Prod_Application_TEMT_02>>
+  - vlan_id: 222
+    description: <<Prod_Web_TEMT>>
+  - vlan_id: 223
+    description: <<Prod_Application_TEMT>>
+  - vlan_id: 224
+    description: <<Prod_DB_TEMT>>
+  - vlan_id: 229
+    description: <<APP_TEMT_POC>>
+  - vlan_id: 300
+    description: <<Jira_APP>>
+  - vlan_id: 301
+    description: <<JIRA_UAT_APP>>
+  - vlan_id: 302
+    description: <<TradeEdge_MDZ_Prod_WEB>>
+  - vlan_id: 303
+    description: <<TradeEdge_MDZ_Prod_DB>>
+  - vlan_id: 305
+    description: <<Jira_Staging_APP>>
+  - vlan_id: 306
+    description: <<Jira_Staging_DB>>
+  - vlan_id: 307
+    description: <<NIAGST>>
+  - vlan_id: 308
+    description: <<GSTN_web>>
+  - vlan_id: 309
+    description: <<TradeEdge_Training_WEB>>
+  - vlan_id: 310
+    description: <<TradeEdge_Training_APP>>
+  - vlan_id: 311
+    description: <<TradeEdge_Training_DB>>
+  - vlan_id: 312
+    description: <<EVFN_Stageweb>>
+  - vlan_id: 314
+    description: <<EVFN_StageDB>>
+  - vlan_id: 315
+    description: <<EVFN_Prodweb>>
+  - vlan_id: 316
+    description: <<EVFN_ProdAPP>>
+  - vlan_id: 317
+    description: <<EVFN_ProdDB>>
+  - vlan_id: 318
+    description: <<UAT_WEB>>
+  - vlan_id: 319
+    description: <<UAT_DB>>
+  - vlan_id: 320
+    description: <<UAT_APP>>
+  - vlan_id: 321
+    description: <<EV_CA>>
+  - vlan_id: 322
+    description: <<FINANZTOOLS_WEB>>
+  - vlan_id: 323
+    description: <<FINANZTOOLS_APP>>
+  - vlan_id: 324
+    description: <<FINANZTOOLS_DB>>
+  - vlan_id: 325
+    description: <<EDGEVERVE_WEB>>
+  - vlan_id: 326
+    description: <<EDGEVERVE_DB>>
+  - vlan_id: 327
+    description: <<EV_ICICI_FINAPP>>
+  - vlan_id: 328
+    description: <<EV_ICICI_FINDB>>
+  - vlan_id: 329
+    description: <<EV_MLP_DB>>
+  - vlan_id: 330
+    description: <<Kone_DB>>
+  - vlan_id: 331
+    description: <<DHL_DB_Vlan>>
+  - vlan_id: 332
+    description: <<Blockchain_POC>>
+  - vlan_id: 333
+    description: <<Kone_WEB>>
+  - vlan_id: 334
+    description: <<GSTN_APP>>
+  - vlan_id: 335
+    description: <<DIGITRANS_prodweb>>
+  - vlan_id: 336
+    description: <<DIGITRANS_prodapp>>
+  - vlan_id: 337
+    description: <<DIGITRANS_prodDB>>
+  - vlan_id: 338
+    description: <<DIGITRANS_pre_prodweb>>
+  - vlan_id: 339
+    description: <<DIGITRANS_pre_prodapp>>
+  - vlan_id: 340
+    description: <<DIGITRANS_pre_prodDB>>
+  - vlan_id: 341
+    description: <<Gemalto_Key_Secure>>
+  - vlan_id: 342
+    description: <<Cloud_JAMF>>
+  - vlan_id: 343
+    description: <<Cloud_JAMF>>
+  - vlan_id: 344
+    description: <<JIRA_Production_APP>>
+  - vlan_id: 345
+    description: <<JIRA_Production_DB>>
+  - vlan_id: 346
+    description: <<MSSQL_DB>>
+  - vlan_id: 352
+    description: <<LEAP_APP>>
+  - vlan_id: 353
+    description: <<LEAP_DB>>
+  - vlan_id: 354
+    description: <<LEAP-Mckesson-PROD-APP>>
+  - vlan_id: 355
+    description: <<LEAP-Mckesson-PROD-DB>>
+  - vlan_id: 356
+    description: <<LEAP-Mckesson-SIT-APP>>
+  - vlan_id: 357
+    description: <<LEAP-Mckesson-SIT-DB>>
+  - vlan_id: 360
+    description: <<OPENSHIFT>>
+  - vlan_id: 361
+    description: <<NetApp_Storage_Grid>>
+  - vlan_id: 362
+    description: <<NetApp_Storage_LB>>
+  - vlan_id: 365
+    description: <<ICMS-APP>>
+  - vlan_id: 366
+    description: <<StorageOnce_federation>>
+  - vlan_id: 367
+    description: <<Anthos>>
+  - vlan_id: 368
+    description: <<Anthos_Ext>>
+  - vlan_id: 369
+    description: <<Anthos_Mgmt>>
+  - vlan_id: 370
+    description: <<Finacle>>
+  - vlan_id: 371
+    description: <<Nutanix_MGMT_Vlan>>
+  - vlan_id: 372
+    description: <<Nutanix_VM_Vlan>>
+  - vlan_id: 404
+    description: <<VLAN0404>>
+  - vlan_id: 448
+    description: <<DEll_Test_VlanL3>>
+  - vlan_id: 449
+    description: <<coretodell>>
+  - vlan_id: 505
+    description: <<Prod_Openstack>>
+  - vlan_id: 550
+    description: <<Nexus_To_Mellanox_Uplink>>
+sonic_l3_vlan:
+  - name: Vlan4090
+    ipv4:
+      addresses:
+        - address: 169.254.4.2/29
+sonic_vlan_ids_mclag:
+  - name: Vlan4090
+    configs:
+      - mclag-separate-ip
+      - ip address 169.254.4.2/29
+sonic_portchannels:
+  - name: PortChannel20
+    mode: lacp
+  - name: PortChannel41
+    mode: lacp
+  - name: PortChannel42
+    mode: lacp
+  - name: PortChannel43
+    mode: lacp
+  - name: PortChannel44
+    mode: lacp
+  - name: PortChannel45
+    mode: lacp
+  - name: PortChannel46
+    mode: lacp
+  - name: PortChannel47
+    mode: lacp
+  - name: PortChannel48
+    mode: lacp
+  - name: PortChannel49
+    mode: lacp
+  - name: PortChannel50
+    mode: lacp
+  - name: PortChannel51
+    mode: lacp
+  - name: PortChannel52
+    mode: lacp
+  - name: PortChannel53
+    mode: lacp
+  - name: PortChannel54
+    mode: lacp
+  - name: PortChannel55
+    mode: lacp
+  - name: PortChannel56
+    mode: lacp
+  - name: PortChannel57
+    mode: lacp
+  - name: PortChannel58
+    mode: lacp
+  - name: PortChannel59
+    mode: lacp
+  - name: PortChannel60
+    mode: lacp
+  - name: PortChannel100
+    mode: lacp
+  - name: PortChannel201
+    mode: lacp
+  - name: PortChannel202
+    mode: lacp
+sonic_portchannels_ids:
+  - po_id: 20
+    mode_active: false
+    mclag: true
+    configs:
+      - description Connected-to-INDHYAPPMGSW01&INDHYAPPMGSW02
+      - switchport trunk allowed Vlan 1-4094
+      - no shutdown
+  - po_id: 41
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV01_Ports_Eth2_ETH1/25>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 42
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV01_Ports_Eth1_ETH1/26>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 43
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV02_Ports_Eth2_ETH1/27>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 44
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV02_Ports_Eth1_ETH1/28>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 45
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV03_Ports_Eth2_ETH1/29>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 46
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV03_Ports_Eth1_ETH1/30>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 47
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV04_Ports_Eth2_ETH1/31>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 48
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV04_Ports_Eth1_ETH1/32>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 49
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV05_Ports_Eth2_ETH1/33>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 50
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV05_Ports_Eth1_ETH1/34>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 51
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV06_Ports_Eth2_ETH1/35>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 52
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV06_Ports_Eth1_ETH1/36>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 53
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV07_Ports_Eth2_ETH1/37>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 54
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV07_Ports_Eth1_ETH1/38>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 55
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV08_Ports_Eth2_ETH1/39>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 56
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV08_Ports_Eth1_ETH1/40>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 57
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV09_Ports_Eth2_ETH1/41>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 58
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV09_Ports_Eth1_ETH1/42>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 59
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV010_Ports_Eth2_ETH1/43>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 60
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYDPRDAHV010_Ports_Eth1_ETH1/44>>
+      - switchport access Vlan 371
+      - switchport trunk allowed Vlan 202-204,210-215,230,310,314,319,330,333,339-340,342-343,371-372
+      - no shutdown
+  - po_id: 100
+    mode_active: false
+    mclag: false
+    configs:
+      - description <<Peer-LINKS>>
+      - switchport trunk allowed Vlan 1-4094
+      - no shutdown
+  - po_id: 201
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<INDHYAPPFW01_Ports_Eth1/1.Eth1/2>>
+      - switchport trunk allowed Vlan 150,160,201-204,210-231,300-303,305-346,348-350,352-357,360-363,365-372,400,410-412,448-449
+      - mtu 1500
+      - no shutdown
+  - po_id: 202
+    mode_active: true
+    mclag: true
+    configs:
+      - description <<INDHYAPPFW02_Ports_Eth1/3.Eth1/4>>
+      - switchport trunk allowed Vlan 150,160,201-204,210-231,300-303,305-346,348-350,352-357,360-363,365-372,400,410-412,448-449
+      - mtu 1500
+      - no shutdown
+sonic_mclag:
+  domain_id: '1'
+  source_address: 169.254.4.2
+  peer_address: 169.254.4.3
+  peer_link: PortChannel100
+  system_mac: 00:00:00:11:11:11
+  keepalive: 1
+  session_timeout: 30
+sonic_mclag_ids:
+  - domain_id: '1'
+    delay_restore: 90
+sonic_interfaces_eth:
+  - name: Eth1/1
+    description: <<INDHYAPPDELLSONICSW01_Eth1/1:R06_PP.B050_INDHYAPPFW01_ETH2:R08_PP.B159>>
+    mtu: 1500
+  - name: Eth1/2
+    description: <<INDHYAPPDELLSONICSW01___Eth1/2:R06_PP.B051_INDHYAPPFW01_ETH4:R08_PP.B160>>
+    mtu: 1500
+  - name: Eth1/3
+    description: <<INDHYAPPDELLSONICSW01_Eth1/3:R06_PP.B074_INDHYAPPFW02_ETH2:R09_PP.A183>>
+    mtu: 1500
+  - name: Eth1/4
+    description: <<INDHYAPPDELLSONICSW01_Eth1/4:R06_PP.B075_INDHYAPPFW02_ETH4:R08_PP.A184>>
+    mtu: 1500
+  - name: Eth1/5
+    description: <<INDHYAPPDELLSONICSW01__Eth1/5:R06_PP.B49_INDHYAPPRPRT01_Gi0/0:R10_PP.B272>>
+    mtu: 1500
+  - name: Eth1/6
+    description: <<connected-to-Gematlo-HYD-HSM>>
+    mtu: 1500
+  - name: Eth1/7
+    description: <<Connected-to-GST-HSM>>
+    mtu: 1500
+  - name: Eth1/8
+    mtu: 9100
+  - name: Eth1/9
+    mtu: 9100
+  - name: Eth1/10
+    mtu: 9100
+  - name: Eth1/11
+    mtu: 9100
+  - name: Eth1/12
+    mtu: 9100
+  - name: Eth1/13
+    mtu: 9100
+  - name: Eth1/14
+    mtu: 9100
+  - name: Eth1/15
+    mtu: 9100
+  - name: Eth1/16
+    mtu: 9100
+  - name: Eth1/17
+    mtu: 9100
+  - name: Eth1/18
+    mtu: 9100
+  - name: Eth1/19
+    mtu: 9100
+  - name: Eth1/20
+    mtu: 9100
+  - name: Eth1/21
+    mtu: 9100
+  - name: Eth1/22
+    mtu: 9100
+  - name: Eth1/23
+    mtu: 9100
+  - name: Eth1/24
+    description: <<INDHYAPPDELLSONICSW01_Eth1/24:R06_PP.B053_INDHYAPPFW01_ETH5:R08_PP.B171>>
+    mtu: 1500
+  - name: Eth1/25
+    description: <<Connected_to_INDHYDPRDAHV01_Ports_Eth2>>
+    mtu: 9100
+  - name: Eth1/26
+    description: <<Connected_to_INDHYDPRDAHV01_Ports_Eth1>>
+    mtu: 9100
+  - name: Eth1/27
+    description: <<Connected_to_INDHYDPRDAHV02_Ports_Eth2>>
+    mtu: 9100
+  - name: Eth1/28
+    description: <<Connected_to_INDHYDPRDAHV02_Ports_Eth1>>
+    mtu: 9100
+  - name: Eth1/29
+    description: <<Connected_to_INDHYDPRDAHV03_Ports_Eth2>>
+    mtu: 9100
+  - name: Eth1/30
+    description: <<Connected_to_INDHYDPRDAHV03_Ports_Eth1>>
+    mtu: 9100
+  - name: Eth1/31
+    description: <<Connected_to_INDHYDPRDAHV04_Ports_Eth2>>
+    mtu: 9100
+  - name: Eth1/32
+    description: <<Connected_to_INDHYDPRDAHV04_Ports_Eth1>>
+    mtu: 9100
+  - name: Eth1/33
+    description: <<Connected_to_INDHYDPRDAHV05_Ports_Eth2>>
+    mtu: 9100
+  - name: Eth1/34
+    description: <<Connected_to_INDHYDPRDAHV05_Ports_Eth1>>
+    mtu: 9100
+  - name: Eth1/35
+    description: <<Connected_to_INDHYDPRDAHV06_Ports_Eth2>>
+    mtu: 9100
+  - name: Eth1/36
+    description: <<Connected_to_INDHYDPRDAHV06_Ports_Eth1>>
+    mtu: 9100
+  - name: Eth1/37
+    description: <<Connected_to_INDHYDPRDAHV07_Ports_Eth2>>
+    mtu: 9100
+  - name: Eth1/38
+    description: <<Connected_to_INDHYDPRDAHV07_Ports_Eth1>>
+    mtu: 9100
+  - name: Eth1/39
+    description: <<Connected_to_INDHYDPRDAHV08_Ports_Eth2>>
+    mtu: 9100
+  - name: Eth1/40
+    description: <<Connected_to_INDHYDPRDAHV08_Ports_Eth1>>
+    mtu: 9100
+  - name: Eth1/41
+    description: <<Connected_to_INDHYDPRDAHV09_Ports_Eth2>>
+    mtu: 9100
+  - name: Eth1/42
+    description: <<Connected_to_INDHYDPRDAHV09_Ports_Eth1>>
+    mtu: 9100
+  - name: Eth1/43
+    description: <<Connected_to_INDHYDPRDAHV010_Ports_Eth2>>
+    mtu: 9100
+  - name: Eth1/44
+    description: <<Connected_to_INDHYDPRDAHV010_Ports_Eth1>>
+    mtu: 9100
+  - name: Eth1/45
+    mtu: 1500
+  - name: Eth1/46
+    mtu: 1500
+  - name: Eth1/47
+    description: Connected-to-INDHYAPPMGSW01-Eth3/13
+    mtu: 9100
+  - name: Eth1/48
+    description: Connected-to-INDHYAPPMGSW02-Eth3/13
+    mtu: 9100
+  - name: Eth1/49
+    mtu: 9100
+  - name: Eth1/50
+    mtu: 9100
+  - name: Eth1/51
+    mtu: 9100
+  - name: Eth1/52
+    mtu: 9100
+  - name: Eth1/53
+    description: <<Peerlink-to-INDHYAPPDELLSONICSW02-Eth1/53>>
+    mtu: 9100
+  - name: Eth1/54
+    description: <<Peerlink-to-INDHYAPPDELLSONICSW02-Eth1/54>>
+    mtu: 9100
+  - name: Eth1/55
+    mtu: 9100
+  - name: Eth1/56
+    mtu: 9100
+sonic_interfaces_eth_ids:
+  - name: Eth1/1
+    configs:
+      - speed 1000
+      - channel-group 201
+      - no shutdown
+  - name: Eth1/2
+    configs:
+      - speed 1000
+      - channel-group 201
+      - no shutdown
+  - name: Eth1/3
+    configs:
+      - speed 1000
+      - channel-group 202
+      - no shutdown
+  - name: Eth1/4
+    configs:
+      - speed 1000
+      - channel-group 202
+      - no shutdown
+  - name: Eth1/5
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport access Vlan 200
+  - name: Eth1/6
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport access Vlan 341
+  - name: Eth1/7
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport access Vlan 334
+  - name: Eth1/8
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/9
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/10
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/11
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/12
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/13
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/14
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/15
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/16
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/17
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/18
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/19
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/20
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/21
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/22
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/23
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/24
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 200
+  - name: Eth1/25
+    configs:
+      - speed 10000
+      - channel-group 41
+      - no shutdown
+  - name: Eth1/26
+    configs:
+      - speed 10000
+      - channel-group 42
+      - no shutdown
+  - name: Eth1/27
+    configs:
+      - speed 10000
+      - channel-group 43
+      - no shutdown
+  - name: Eth1/28
+    configs:
+      - speed 10000
+      - channel-group 44
+      - no shutdown
+  - name: Eth1/29
+    configs:
+      - speed 10000
+      - channel-group 45
+      - no shutdown
+  - name: Eth1/30
+    configs:
+      - speed 10000
+      - channel-group 46
+      - no shutdown
+  - name: Eth1/31
+    configs:
+      - speed 10000
+      - channel-group 47
+      - no shutdown
+  - name: Eth1/32
+    configs:
+      - speed 10000
+      - channel-group 48
+      - no shutdown
+  - name: Eth1/33
+    configs:
+      - speed 10000
+      - channel-group 49
+      - no shutdown
+  - name: Eth1/34
+    configs:
+      - speed 10000
+      - channel-group 50
+      - no shutdown
+  - name: Eth1/35
+    configs:
+      - speed 10000
+      - channel-group 51
+      - no shutdown
+  - name: Eth1/36
+    configs:
+      - speed 10000
+      - channel-group 52
+      - no shutdown
+  - name: Eth1/37
+    configs:
+      - speed 10000
+      - channel-group 53
+      - no shutdown
+  - name: Eth1/38
+    configs:
+      - speed 10000
+      - channel-group 54
+      - no shutdown
+  - name: Eth1/39
+    configs:
+      - speed 10000
+      - channel-group 55
+      - no shutdown
+  - name: Eth1/40
+    configs:
+      - speed 10000
+      - channel-group 56
+      - no shutdown
+  - name: Eth1/41
+    configs:
+      - speed 10000
+      - channel-group 57
+      - no shutdown
+  - name: Eth1/42
+    configs:
+      - speed 10000
+      - channel-group 58
+      - no shutdown
+  - name: Eth1/43
+    configs:
+      - speed 10000
+      - channel-group 59
+      - no shutdown
+  - name: Eth1/44
+    configs:
+      - speed 10000
+      - channel-group 60
+      - no shutdown
+  - name: Eth1/45
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/46
+    configs:
+      - speed 10000
+      - no shutdown
+  - name: Eth1/47
+    configs:
+      - speed 10000
+      - channel-group 20
+      - no shutdown
+  - name: Eth1/48
+    configs:
+      - speed 10000
+      - channel-group 20
+      - no shutdown
+  - name: Eth1/49
+    configs:
+      - speed 100000
+      - no shutdown
+  - name: Eth1/50
+    configs:
+      - speed 100000
+      - no shutdown
+  - name: Eth1/51
+    configs:
+      - speed 100000
+      - no shutdown
+  - name: Eth1/52
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/53
+    configs:
+      - speed 100000
+      - channel-group 100
+      - no shutdown
+  - name: Eth1/54
+    configs:
+      - speed 100000
+      - channel-group 100
+      - no shutdown
+  - name: Eth1/55
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/56
+    configs:
+      - speed 100000
+      - shutdown
+sonic_ntp_servers:
+  servers:
+    - server: 10.205.13.117
+      minpoll: 6
+      maxpoll: 10
+    - server: 10.205.13.118
+      minpoll: 6
+      maxpoll: 10
+sonic_snmp_servers:
+  user_name: SNMPV3_USER
+  group_name: SNMPV3_Group
+  auth_type: md5
+  auth_password: ToBeFilled
+  priv_type: aes-128
+  priv_password: ToBeFilled
+  enable_trap: true
+  snmp_groups:
+    - group: SNMPV3_Group
+      v3_privileges: read test write test notify test
+      v3_type: priv
+  views:
+    - permission: test
+      oid: '0.1'
+      type: included
+  snmp_server_host:
+    - host: 10.205.11.114
+      user: SNMPV3_USER
+      traps: noauth
+    - host: 10.205.11.241
+      user: SNMPV3_USER
+      traps: noauth
+    - host: 10.205.11.11
+      user: SNMPV3_USER
+      traps: noauth
+    - host: 10.205.58.23
+      user: SNMPV3_USER
+      traps: noauth
+sonic_logging_server:
+  - logging_server: 10.205.11.87
+    remote_port: 514
+  - logging_server: 10.205.11.241
+    remote_port: 514
+sonic_aaa:
+  authentication:
+    data:
+      local: true
+      group: tacacs+
+      fail_through: true
+sonic_tacacs_server:
+  auth_type: pap
+  key: ToBeFilled
+  timeout: 5
+  servers:
+    host:
+      - name: 10.205.11.240
+        port: 49
+        auth_type: pap
+        priority: 1
+        timeout: 5
+        key: ToBeFilled
+sonic_users:
+  - name: swadmin
+    role: admin
+    password: ToBeFilled
+    update_password: always
+sonic_sflow:
+  collector:
+    - ip: 10.205.11.100
+      port: 6343
+      vrf: mgmt
+  agent:
+    - loopback: 0

@@ -1,0 +1,7 @@
+- name: Configure Sflow
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: sonic_sflow.j2
+    save: true
+  when: sonic_sflow is defined and sonic_sflow

@@ -1,0 +1,226 @@
+ansible-playbook [core 2.14.5]
+  config file = /usr/local/var/www/aarhoi/Backend/src/sonicos4/ansible.cfg
+  configured module search path = ['/Users/hareesh/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python3.11/site-packages/ansible
+  ansible collection location = /usr/local/var/www/aarhoi/Backend/src/sonicos4/collections/ansible_collections
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 3.11.3 (main, Apr  7 2023, 19:29:16) [Clang 14.0.0 (clang-1400.0.29.202)] (/usr/local/opt/python@3.11/bin/python3.11)
+  jinja version = 3.1.2
+  libyaml = True
+Using /usr/local/var/www/aarhoi/Backend/src/sonicos4/ansible.cfg as config file
+host_list declined parsing /usr/local/var/www/aarhoi/Backend/src/sonicos4/hosts as it did not pass its verify_file() method
+script declined parsing /usr/local/var/www/aarhoi/Backend/src/sonicos4/hosts as it did not pass its verify_file() method
+auto declined parsing /usr/local/var/www/aarhoi/Backend/src/sonicos4/hosts as it did not pass its verify_file() method
+Parsed /usr/local/var/www/aarhoi/Backend/src/sonicos4/hosts inventory source with ini plugin
+redirecting (type: callback) ansible.builtin.profile_tasks to ansible.posix.profile_tasks
+Skipping callback 'default', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+
+PLAYBOOK: setup_config.yml *****************************************************
+1 plays in setup_config.yml
+
+PLAY [Configure Dell SonicOS Switch] *******************************************
+
+TASK [Get System Variables] ****************************************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/setup_config.yml:9
+Wednesday 02 August 2023  10:23:13 +0530 (0:00:00.085)       0:00:00.085 ******
+
+TASK [get_variables : Gather facts] ********************************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/get_variables/tasks/main.yml:2
+Wednesday 02 August 2023  10:23:13 +0530 (0:00:00.113)       0:00:00.198 ******
+redirecting (type: connection) ansible.builtin.httpapi to ansible.netcommon.httpapi
+<192.168.2.12> ESTABLISH LOCAL CONNECTION FOR USER: hareesh
+<192.168.2.12> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9 `"&& mkdir "` echo /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690951995.393288-19146-146520283891753 `" && echo ansible-tmp-1690951995.393288-19146-146520283891753="` echo /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690951995.393288-19146-146520283891753 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.11/site-packages/ansible/modules/setup.py
+<192.168.2.12> PUT /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/tmpokojnt_r TO /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690951995.393288-19146-146520283891753/AnsiballZ_setup.py
+<192.168.2.12> EXEC /bin/sh -c 'chmod u+x /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690951995.393288-19146-146520283891753/ /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690951995.393288-19146-146520283891753/AnsiballZ_setup.py && sleep 0'
+<192.168.2.12> EXEC /bin/sh -c '/usr/local/opt/python@3.11/bin/python3.11 /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690951995.393288-19146-146520283891753/AnsiballZ_setup.py && sleep 0'
+<192.168.2.12> EXEC /bin/sh -c 'rm -f -r /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690951995.393288-19146-146520283891753/ > /dev/null 2>&1 && sleep 0'
+ok: [h1]
+
+TASK [get_variables : Format Date & Time] **************************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/get_variables/tasks/main.yml:5
+Wednesday 02 August 2023  10:23:16 +0530 (0:00:02.458)       0:00:02.656 ******
+redirecting (type: connection) ansible.builtin.httpapi to ansible.netcommon.httpapi
+ok: [h1] => {
+    "ansible_facts": {
+        "formatted_date": "02-08-2023",
+        "formatted_tine": "10:23:16"
+    },
+    "changed": false
+}
+
+TASK [get_variables : Get System Details] **************************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/get_variables/tasks/main.yml:10
+Wednesday 02 August 2023  10:23:17 +0530 (0:00:01.391)       0:00:04.048 ******
+redirecting (type: connection) ansible.builtin.httpapi to ansible.netcommon.httpapi
+ok: [h1] => {
+    "ansible_facts": {
+        "current_date_time": "02-08-2023 10:23:16",
+        "current_date_time_unix": "1690951996"
+    },
+    "changed": false
+}
+
+TASK [Backup Latest Configuration Before Backup] *******************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/setup_config.yml:13
+Wednesday 02 August 2023  10:23:19 +0530 (0:00:01.293)       0:00:05.341 ******
+
+TASK [backup_inventory : include_tasks] ****************************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/backup_inventory/tasks/main.yml:3
+Wednesday 02 August 2023  10:23:19 +0530 (0:00:00.093)       0:00:05.435 ******
+redirecting (type: action) dellemc.enterprise_sonic.sonic_command to dellemc.enterprise_sonic.sonic
+redirecting (type: action) dellemc.enterprise_sonic.sonic_command to dellemc.enterprise_sonic.sonic
+redirecting (type: action) dellemc.enterprise_sonic.sonic_command to dellemc.enterprise_sonic.sonic
+included: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/backup_inventory/tasks/get_device_backup.yml for h1
+
+TASK [backup_inventory : Create / Check backup directory] **********************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/backup_inventory/tasks/get_device_backup.yml:1
+Wednesday 02 August 2023  10:23:19 +0530 (0:00:00.082)       0:00:05.518 ******
+redirecting (type: connection) ansible.builtin.httpapi to ansible.netcommon.httpapi
+<192.168.2.12> ESTABLISH LOCAL CONNECTION FOR USER: hareesh
+<192.168.2.12> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9 `"&& mkdir "` echo /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952000.66347-19191-179809709625952 `" && echo ansible-tmp-1690952000.66347-19191-179809709625952="` echo /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952000.66347-19191-179809709625952 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.11/site-packages/ansible/modules/file.py
+<192.168.2.12> PUT /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/tmphsb88xcn TO /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952000.66347-19191-179809709625952/AnsiballZ_file.py
+<192.168.2.12> EXEC /bin/sh -c 'chmod u+x /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952000.66347-19191-179809709625952/ /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952000.66347-19191-179809709625952/AnsiballZ_file.py && sleep 0'
+<192.168.2.12> EXEC /bin/sh -c '/usr/local/opt/python@3.11/bin/python3.11 /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952000.66347-19191-179809709625952/AnsiballZ_file.py && sleep 0'
+<192.168.2.12> EXEC /bin/sh -c 'rm -f -r /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952000.66347-19191-179809709625952/ > /dev/null 2>&1 && sleep 0'
+ok: [h1] => {
+    "changed": false,
+    "diff": {
+        "after": {
+            "path": "./output"
+        },
+        "before": {
+            "path": "./output"
+        }
+    },
+    "gid": 80,
+    "group": "admin",
+    "invocation": {
+        "module_args": {
+            "_diff_peek": null,
+            "_original_basename": null,
+            "access_time": null,
+            "access_time_format": "%Y%m%d%H%M.%S",
+            "attributes": null,
+            "follow": true,
+            "force": false,
+            "group": null,
+            "mode": null,
+            "modification_time": null,
+            "modification_time_format": "%Y%m%d%H%M.%S",
+            "owner": null,
+            "path": "./output",
+            "recurse": true,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": null,
+            "state": "directory",
+            "unsafe_writes": false
+        }
+    },
+    "mode": "0755",
+    "owner": "hareesh",
+    "path": "./output",
+    "size": 288,
+    "state": "directory",
+    "uid": 501
+}
+
+TASK [Get Date Time] ***********************************************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/backup_inventory/tasks/get_device_backup.yml:7
+Wednesday 02 August 2023  10:23:21 +0530 (0:00:01.760)       0:00:07.278 ******
+
+TASK [get_variables : Gather facts] ********************************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/get_variables/tasks/main.yml:2
+Wednesday 02 August 2023  10:23:21 +0530 (0:00:00.105)       0:00:07.383 ******
+redirecting (type: connection) ansible.builtin.httpapi to ansible.netcommon.httpapi
+<192.168.2.12> ESTABLISH LOCAL CONNECTION FOR USER: hareesh
+<192.168.2.12> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9 `"&& mkdir "` echo /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952002.446529-19211-207395036314218 `" && echo ansible-tmp-1690952002.446529-19211-207395036314218="` echo /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952002.446529-19211-207395036314218 `" ) && sleep 0'
+Using module file /usr/local/lib/python3.11/site-packages/ansible/modules/setup.py
+<192.168.2.12> PUT /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/tmpr470kxoo TO /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952002.446529-19211-207395036314218/AnsiballZ_setup.py
+<192.168.2.12> EXEC /bin/sh -c 'chmod u+x /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952002.446529-19211-207395036314218/ /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952002.446529-19211-207395036314218/AnsiballZ_setup.py && sleep 0'
+<192.168.2.12> EXEC /bin/sh -c '/usr/local/opt/python@3.11/bin/python3.11 /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952002.446529-19211-207395036314218/AnsiballZ_setup.py && sleep 0'
+<192.168.2.12> EXEC /bin/sh -c 'rm -f -r /Users/hareesh/.ansible/tmp/ansible-local-1914042yqk9h9/ansible-tmp-1690952002.446529-19211-207395036314218/ > /dev/null 2>&1 && sleep 0'
+ok: [h1]
+
+TASK [get_variables : Format Date & Time] **************************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/get_variables/tasks/main.yml:5
+Wednesday 02 August 2023  10:23:23 +0530 (0:00:01.843)       0:00:09.226 ******
+redirecting (type: connection) ansible.builtin.httpapi to ansible.netcommon.httpapi
+ok: [h1] => {
+    "ansible_facts": {
+        "formatted_date": "02-08-2023",
+        "formatted_tine": "10:23:22"
+    },
+    "changed": false
+}
+
+TASK [get_variables : Get System Details] **************************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/get_variables/tasks/main.yml:10
+Wednesday 02 August 2023  10:23:24 +0530 (0:00:01.299)       0:00:10.526 ******
+redirecting (type: connection) ansible.builtin.httpapi to ansible.netcommon.httpapi
+ok: [h1] => {
+    "ansible_facts": {
+        "current_date_time": "02-08-2023 10:23:22",
+        "current_date_time_unix": "1690952002"
+    },
+    "changed": false
+}
+redirecting (type: action) dellemc.enterprise_sonic.sonic_command to dellemc.enterprise_sonic.sonic
+
+TASK [backup_inventory : Get System Version] ***********************************
+task path: /usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/backup_inventory/tasks/get_device_backup.yml:11
+Wednesday 02 August 2023  10:23:25 +0530 (0:00:01.313)       0:00:11.840 ******
+redirecting (type: connection) ansible.builtin.network_cli to ansible.netcommon.network_cli
+redirecting (type: action) dellemc.enterprise_sonic.sonic_command to dellemc.enterprise_sonic.sonic
+redirecting (type: action) dellemc.enterprise_sonic.sonic_command to dellemc.enterprise_sonic.sonic
+The full traceback is:
+  File "/usr/local/var/www/aarhoi/Backend/src/sonicos4/collections/ansible_collections/dellemc/enterprise_sonic/plugins/module_utils/network/sonic/sonic.py", line 124, in run_commands
+    return connection.run_commands(commands=commands, check_rc=check_rc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ansible/module_utils/connection.py", line 200, in __rpc__
+    raise ConnectionError(to_text(msg, errors='surrogate_then_replace'), code=code)
+fatal: [h1]: FAILED! => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "commands": [
+                "show version"
+            ],
+            "interval": 1,
+            "match": "all",
+            "retries": 10,
+            "wait_for": null
+        }
+    },
+    "msg": "ssh connection failed: Failed to authenticate public key: Access denied for 'publickey'. Authentication that can continue: publickey,password"
+}
+
+PLAY RECAP *********************************************************************
+h1                         : ok=8    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+Wednesday 02 August 2023  10:23:36 +0530 (0:00:10.987)       0:00:22.827 ******
+===============================================================================
+backup_inventory : Get System Version ---------------------------------- 10.99s
+/usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/backup_inventory/tasks/get_device_backup.yml:11
+get_variables : Gather facts -------------------------------------------- 4.30s
+/usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/get_variables/tasks/main.yml:2
+get_variables : Format Date & Time -------------------------------------- 2.69s
+/usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/get_variables/tasks/main.yml:5
+get_variables : Get System Details -------------------------------------- 2.61s
+/usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/get_variables/tasks/main.yml:10
+backup_inventory : Create / Check backup directory ---------------------- 1.76s
+/usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/backup_inventory/tasks/get_device_backup.yml:1
+Get System Variables ---------------------------------------------------- 0.11s
+/usr/local/var/www/aarhoi/Backend/src/sonicos4/setup_config.yml:9 -------------
+Get Date Time ----------------------------------------------------------- 0.11s
+/usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/backup_inventory/tasks/get_device_backup.yml:7
+Backup Latest Configuration Before Backup ------------------------------- 0.09s
+/usr/local/var/www/aarhoi/Backend/src/sonicos4/setup_config.yml:13 ------------
+backup_inventory : include_tasks ---------------------------------------- 0.08s
+/usr/local/var/www/aarhoi/Backend/src/sonicos4/roles/backup_inventory/tasks/main.yml:3

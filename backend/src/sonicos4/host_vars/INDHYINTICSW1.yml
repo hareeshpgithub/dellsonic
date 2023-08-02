@@ -1,0 +1,325 @@
+# Created using Aarohi IT Solutions Private Limited Proprietary Software
+# This file contains confidential and proprietary information.
+# Unauthorized use, reproduction, or distribution may result in legal penalties.
+# Created: 21-Jul-2023 12:46
+
+# Management IP
+management_ip: 10.205.12.22
+
+# Host Name
+host_name: INDHYINTICSW1
+
+# Any Cast Mac Address
+# Configuration Not Found
+
+# Interface Loopback
+# Configuration Not Found
+
+# VRF Management
+# Configuration Not Found
+
+# Vlan
+sonic_vlans:
+  - vlan_id: '50'
+    description: <<L2_Vlan>>
+  - vlan_id: '71'
+    description: <<Management_vlan>>
+  - vlan_id: '100'
+    description: <<L2_INT_NIPS_PBR>>
+
+# Vlan Id
+
+# Vxlan
+# Configuration Not Found
+
+# Portchannel
+# Configuration Not Found
+
+# Mclag
+# Configuration Not Found
+
+# Interface Ethernet
+sonic_interfaces_eth:
+  - name: Eth1/1
+    mtu: '9100'
+  - name: Eth1/2
+    mtu: '9100'
+  - name: Eth1/3
+    mtu: '9100'
+  - name: Eth1/4
+    mtu: '9100'
+  - name: Eth1/5
+    mtu: '9100'
+  - name: Eth1/6
+    mtu: '9100'
+  - name: Eth1/7
+    mtu: '9100'
+  - name: Eth1/8
+    mtu: '9100'
+  - name: Eth1/9
+    mtu: '9100'
+  - name: Eth1/10
+    mtu: '9100'
+  - name: Eth1/11
+    mtu: '9100'
+  - name: Eth1/12
+    mtu: '9100'
+  - name: Eth1/13
+    mtu: '9100'
+  - name: Eth1/14
+    description: <<Connected_To_INDHYINTICSW1_Eth1/14:R08_To_INDHYCISCONIPS01_Eth2/1/2:R08>>
+    mtu: '1500'
+  - name: Eth1/15
+    description: <<Connected_To_INDHYINTICSW1_Eth1/15:R08_To_INDHYCISCONIPS02_Eth2/1/2:R09>>
+    mtu: '1500'
+  - name: Eth1/16
+    mtu: '9100'
+  - name: Eth1/17
+    description: <<Connected_To_INDHYINTICSW1_Eth1/17:R08_To_INDHYINTFW01_Lan1:R08>>
+    mtu: '1500'
+  - name: Eth1/18
+    mtu: '9100'
+  - name: Eth1/19
+    mtu: '9100'
+  - name: Eth1/20
+    mtu: '9100'
+  - name: Eth1/21
+    mtu: '9100'
+  - name: Eth1/22
+    mtu: '9100'
+  - name: Eth1/23
+    mtu: '9100'
+  - name: Eth1/24
+    description: <<Connected_To_INDHYINTICSW1_Eth1/24_R08_To_INDHYINTICSW02_Gi1/0/8_R09>>
+    mtu: '1500'
+  - name: Eth1/25
+    mtu: '9100'
+  - name: Eth1/26
+    mtu: '9100'
+  - name: Eth1/27
+    mtu: '9100'
+  - name: Eth1/28
+    mtu: '9100'
+sonic_interfaces_eth_ids:
+  - name: Eth1/1
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/2
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/3
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/4
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/5
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/6
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/7
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/8
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/9
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/10
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/11
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/12
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/13
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/14
+    configs:
+      - speed 10000
+      - no shutdown
+      - switchport access Vlan 100
+  - name: Eth1/15
+    configs:
+      - speed 10000
+      - no shutdown
+      - switchport access Vlan 100
+  - name: Eth1/16
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/17
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport access Vlan 100
+  - name: Eth1/18
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/19
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/20
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/21
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/22
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/23
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/24
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 1-4094
+  - name: Eth1/25
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/26
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/27
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/28
+    configs:
+      - speed 100000
+      - shutdown
+
+# Port Break
+# Configuration Not Found
+
+# IP Routes
+ip_routes:
+  - destination: 0.0.0.0/0
+    hop: 10.205.12.1
+
+# IP Prefix List
+# Configuration Not Found
+
+# Route Maps
+# Configuration Not Found
+
+# BGP Server
+# Configuration Not Found
+
+# NTP Server
+sonic_ntp_servers:
+  servers:
+    - server: 10.205.13.117
+      minpoll: '6'
+      maxpoll: '10'
+    - server: 10.205.13.118
+      minpoll: '6'
+      maxpoll: '10'
+
+# SNMP
+sonic_snmp_servers:
+  user_name: SNMPV3_USER
+  group_name: SNMPV3_Group
+  auth_type: md5
+  auth_password: ToBeFilled
+  priv_type: aes-128
+  priv_password: ToBeFilled
+  snmp_groups:
+    - group: SNMPV3_Group
+      v3_privileges: read test write test notify test
+      v3_type: priv
+  enable_trap: true
+  views:
+    - permission: test
+      oid: '.1'
+      type: included
+  snmp_server_host:
+    - host: 10.205.11.114
+      user: SNMPV3_USER
+      traps: noauth
+    - host: 10.205.11.241
+      user: SNMPV3_USER
+      traps: noauth
+    - host: 10.205.11.11
+      user: SNMPV3_USER
+      traps: noauth
+
+# IP Access List
+# Configuration Not Found
+
+# Timezone
+sonic_timezone: Asia/Kolkata
+
+# Logging Server
+sonic_logging_server:
+  - logging_server: 10.205.11.87
+    remote_port: 514
+  - logging_server: 10.205.11.241
+    remote_port: 514
+
+# Router OSPF
+# Configuration Not Found
+
+# BFD
+# Configuration Not Found
+
+# AAA
+sonic_aaa:
+  authentication:
+    data:
+      local: true
+      group: tacacs+
+      fail_through: true
+
+# Tacacs
+sonic_tacacs_server:
+  auth_type: pap
+  key: ToBeFilled
+  timeout: '5'
+  servers:
+    host:
+      - name: 10.205.11.240
+        port: '49'
+        auth_type: pap
+        priority: '1'
+        timeout: '5'
+        key: ToBeFilled
+
+# Users
+sonic_users:
+  - name: swadmin
+    role: admin
+    password: ToBeFilled
+    update_password: always
+
+# SFlow
+# Configuration Not Found

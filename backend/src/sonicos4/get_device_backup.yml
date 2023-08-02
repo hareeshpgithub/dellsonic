@@ -1,0 +1,13 @@
+---
+- name: Get Device Backup
+  hosts: all
+  gather_facts: False
+  connection: httpapi
+  collections:
+    - dellemc.enterprise_sonic
+  tasks:
+    - name: Get Device Backup
+      include_role:
+        name: backup_inventory
+  vars:
+    file_name: "{{inventory_hostname}}.txt"

@@ -1,0 +1,11 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{#######################################
+
+#Purpose: update portchannel configs
+
+#######################################}
+{% if ip_routes is defined and ip_routes %}
+    {% for item in ip_routes %}
+        ip route {{item.destination}} {{item.hop}}
+    {% endfor %}
+{% endif %}

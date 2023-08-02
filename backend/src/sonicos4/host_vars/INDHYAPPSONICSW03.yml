@@ -1,0 +1,543 @@
+# Created using Aarohi IT Solutions Private Limited Proprietary Software
+# This file contains confidential and proprietary information.
+# Unauthorized use, reproduction, or distribution may result in legal penalties.
+# Created: 21-Jul-2023 12:46
+
+# Management IP
+management_ip: 10.205.12.70
+
+# Host Name
+host_name: INDHYAPPSONICSW03
+
+# Any Cast Mac Address
+# Configuration Not Found
+
+# Interface Loopback
+loopback_inf0: Loopback0
+loopback0_ip: 10.205.10.18/32
+sonic_l3_loopback_interfaces:
+  - name: '{{ loopback_inf0 }}'
+    ipv4:
+      addresses:
+        - address: '{{ loopback0_ip }}'
+sonic_loopback_interface_ids:
+  - lb_id: '0'
+    ipv4_address: '{{ loopback0_ip }}'
+sonic_loopback_interfaces:
+  - name: '{{ loopback_inf0 }}'
+
+# VRF Management
+# Configuration Not Found
+
+# Vlan
+sonic_l3_vlan:
+  - name: Vlan2000
+    ipv4:
+      addresses:
+        - address: 169.254.4.9/29
+
+# Vlan Id
+sonic_vlan_ids_mclag:
+  - name: Vlan2000
+    configs:
+      - mclag-separate-ip
+      - ip address 169.254.4.9/29
+
+# Vxlan
+# Configuration Not Found
+
+# Portchannel
+sonic_portchannels:
+  - name: PortChannel20
+    mode: lacp
+  - name: PortChannel100
+    mode: lacp
+sonic_portchannels_ids:
+  - po_id: '20'
+    mode_active: false
+    mclag: true
+    configs:
+      - description <<Connected_to_INDHYAPPMGSW01_INDHYAPPMGSW02>>
+      - switchport trunk allowed Vlan 1-4094
+      - no shutdown
+  - po_id: '100'
+    mode_active: false
+    mclag: false
+    configs:
+      - description <<Peer-link>>
+      - switchport trunk allowed Vlan 1-4094
+      - no shutdown
+
+# Mclag
+sonic_mclag:
+  domain_id: '2'
+  source_address: 169.254.4.9
+  peer_address: 169.254.4.10
+  peer_link: PortChannel100
+  system_mac: 00:00:00:11:11:11
+  keepalive: '1'
+  session_timeout: '30'
+sonic_mclag_ids:
+  - domain_id: '2'
+    delay_restore: '90'
+
+# Interface Ethernet
+sonic_interfaces_eth:
+  - name: Eth1/1
+    mtu: '9100'
+  - name: Eth1/2
+    mtu: '9100'
+  - name: Eth1/3
+    mtu: '9100'
+  - name: Eth1/4
+    mtu: '9100'
+  - name: Eth1/5
+    mtu: '9100'
+  - name: Eth1/6
+    mtu: '9100'
+  - name: Eth1/7
+    mtu: '9100'
+  - name: Eth1/8
+    mtu: '9100'
+  - name: Eth1/9
+    mtu: '9100'
+  - name: Eth1/10
+    mtu: '9100'
+  - name: Eth1/11
+    mtu: '9100'
+  - name: Eth1/12
+    mtu: '9100'
+  - name: Eth1/13
+    mtu: '9100'
+  - name: Eth1/14
+    mtu: '9100'
+  - name: Eth1/15
+    mtu: '9100'
+  - name: Eth1/16
+    mtu: '9100'
+  - name: Eth1/17
+    mtu: '9100'
+  - name: Eth1/18
+    mtu: '9100'
+  - name: Eth1/19
+    mtu: '9100'
+  - name: Eth1/20
+    mtu: '9100'
+  - name: Eth1/21
+    mtu: '9100'
+  - name: Eth1/22
+    mtu: '9100'
+  - name: Eth1/23
+    mtu: '9100'
+  - name: Eth1/24
+    mtu: '9100'
+  - name: Eth1/25
+    mtu: '9100'
+  - name: Eth1/26
+    mtu: '9100'
+  - name: Eth1/27
+    mtu: '9100'
+  - name: Eth1/28
+    mtu: '9100'
+  - name: Eth1/29
+    mtu: '9100'
+  - name: Eth1/30
+    mtu: '9100'
+  - name: Eth1/31
+    mtu: '9100'
+  - name: Eth1/32
+    mtu: '9100'
+  - name: Eth1/33
+    mtu: '9100'
+  - name: Eth1/34
+    mtu: '9100'
+  - name: Eth1/35
+    mtu: '9100'
+  - name: Eth1/36
+    mtu: '9100'
+  - name: Eth1/37
+    mtu: '9100'
+  - name: Eth1/38
+    mtu: '9100'
+  - name: Eth1/39
+    mtu: '9100'
+  - name: Eth1/40
+    mtu: '9100'
+  - name: Eth1/41
+    mtu: '9100'
+  - name: Eth1/42
+    mtu: '9100'
+  - name: Eth1/43
+    mtu: '9100'
+  - name: Eth1/44
+    mtu: '9100'
+  - name: Eth1/45
+    mtu: '9100'
+  - name: Eth1/46
+    mtu: '9100'
+  - name: Eth1/47
+    description: <<Connected-to-INDHYAPPMGSW01-Eth3/3>>
+    mtu: '9100'
+  - name: Eth1/48
+    description: <<Connected-to-INDHYAPPMGSW02-Eth3/3>>
+    mtu: '9100'
+  - name: Eth1/49
+    mtu: '9100'
+  - name: Eth1/50
+    mtu: '9100'
+  - name: Eth1/51
+    mtu: '9100'
+  - name: Eth1/52
+    mtu: '9100'
+  - name: Eth1/53
+    description: <<Peerlink-to-INDHYAPPSONICSW04-Eth1/53>>
+    mtu: '9100'
+  - name: Eth1/54
+    description: <<Peerlink-to-INDHYAPPSONICSW04-Eth1/54>>
+    mtu: '9100'
+  - name: Eth1/55
+    mtu: '9100'
+  - name: Eth1/56
+    mtu: '9100'
+sonic_interfaces_eth_ids:
+  - name: Eth1/1
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/2
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/3
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/4
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/5
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/6
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/7
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/8
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/9
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/10
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/11
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/12
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/13
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/14
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/15
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/16
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/17
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/18
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/19
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/20
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/21
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/22
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/23
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/24
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/25
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/26
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/27
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/28
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/29
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/30
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/31
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/32
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/33
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/34
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/35
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/36
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/37
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/38
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/39
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/40
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/41
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/42
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/43
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/44
+    configs:
+      - speed 25000
+      - shutdown
+  - name: Eth1/45
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/46
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/47
+    configs:
+      - speed 10000
+      - channel-group 20
+      - no shutdown
+  - name: Eth1/48
+    configs:
+      - speed 10000
+      - channel-group 20
+      - no shutdown
+  - name: Eth1/49
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/50
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/51
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/52
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/53
+    configs:
+      - speed 100000
+      - channel-group 100
+      - no shutdown
+  - name: Eth1/54
+    configs:
+      - speed 100000
+      - channel-group 100
+      - no shutdown
+  - name: Eth1/55
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/56
+    configs:
+      - speed 100000
+      - shutdown
+
+# Port Break
+# Configuration Not Found
+
+# IP Routes
+# Configuration Not Found
+
+# IP Prefix List
+# Configuration Not Found
+
+# Route Maps
+# Configuration Not Found
+
+# BGP Server
+# Configuration Not Found
+
+# NTP Server
+sonic_ntp_servers:
+  servers:
+    - server: 10.205.13.117
+      minpoll: '6'
+      maxpoll: '10'
+    - server: 10.205.13.118
+      minpoll: '6'
+      maxpoll: '10'
+
+# SNMP
+sonic_snmp_servers:
+  user_name: SNMPV3_USER
+  group_name: SNMPV3_Group
+  auth_type: md5
+  auth_password: ToBeFilled
+  priv_type: aes-128
+  priv_password: ToBeFilled
+  snmp_groups:
+    - group: SNMPV3_Group
+      v3_privileges: read test write test notify test
+      v3_type: priv
+  enable_trap: true
+  views:
+    - permission: test
+      oid: '.1'
+      type: included
+  snmp_server_host:
+    - host: 10.205.11.114
+      user: SNMPV3_USER
+      traps: noauth
+    - host: 10.205.11.241
+      user: SNMPV3_USER
+      traps: noauth
+    - host: 10.205.11.11
+      user: SNMPV3_USER
+      traps: noauth
+    - host: 10.205.58.23
+      user: SNMPV3_USER
+      traps: noauth
+
+# IP Access List
+# Configuration Not Found
+
+# Timezone
+sonic_timezone: Asia/Kolkata
+
+# Logging Server
+sonic_logging_server:
+  - logging_server: 10.205.11.87
+    remote_port: 514
+  - logging_server: 10.205.11.241
+    remote_port: 514
+
+# Router OSPF
+# Configuration Not Found
+
+# BFD
+# Configuration Not Found
+
+# AAA
+sonic_aaa:
+  authentication:
+    data:
+      local: true
+      group: tacacs+
+      fail_through: true
+
+# Tacacs
+sonic_tacacs_server:
+  auth_type: pap
+  key: ToBeFilled
+  timeout: '5'
+  servers:
+    host:
+      - name: 10.205.11.240
+        port: '49'
+        auth_type: pap
+        priority: '1'
+        timeout: '5'
+        key: ToBeFilled
+
+# Users
+sonic_users:
+  - name: swadmin
+    role: admin
+    password: ToBeFilled
+    update_password: always
+
+# SFlow
+sonic_sflow:
+  collector:
+    - ip: 10.205.11.100
+      port: '6343'
+      vrf: mgmt
+  agent:
+    - loopback: '0'

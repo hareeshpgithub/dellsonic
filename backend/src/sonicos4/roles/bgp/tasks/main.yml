@@ -1,0 +1,7 @@
+---
+- include_tasks: create_bgp.yml
+- include_tasks: create_bgp_af.yml
+- include_tasks: create_bgp_neighbors.yml
+- include_tasks: create_bgp_neighbors_af.yml
+- include_tasks: update_bgp_af_extra.yml
+- include_tasks: update_bgp_neighbors_af_extra.yml

@@ -1,0 +1,9 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{% if sonic_portchannels_ids is defined and sonic_portchannels_ids %}
+    {% for item in sonic_portchannels_ids %}
+      {% if item.mclag is defined and item.mclag %}
+interface PortChannel {{ item.po_id }}
+ mclag {{sonic_mclag['domain_id']}}
+      {% endif %}
+    {% endfor %}
+{% endif %}

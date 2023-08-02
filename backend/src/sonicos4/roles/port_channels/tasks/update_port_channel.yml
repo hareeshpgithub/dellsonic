@@ -1,0 +1,8 @@
+---
+- name: "update portchannel configurations"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: sonic_portchannel.j2
+    save: true
+  when: sonic_portchannels_ids is defined and sonic_portchannels_ids

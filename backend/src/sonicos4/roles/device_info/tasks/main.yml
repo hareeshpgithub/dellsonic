@@ -1,0 +1,4 @@
+---
+- include_tasks: get_device_info.yml
+  vars:
+    connection: network_cli

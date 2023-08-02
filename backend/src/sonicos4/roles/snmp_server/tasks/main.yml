@@ -1,0 +1,7 @@
+- name: "configure snmp server"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: sonic_snmp_server.j2
+    save: true
+  when: sonic_snmp_servers is defined and sonic_snmp_servers

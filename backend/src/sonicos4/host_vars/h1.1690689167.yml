@@ -1,0 +1,527 @@
+
+# This file contains confidential and proprietary information.
+# Unauthorized use, reproduction, or distribution may result in legal penalties.
+# Created: 26-Jul-2023 17:36
+
+# Management IP
+management_ip: ''
+
+# Host Name
+host_name: INDHYOOBSONICMGMTSW03
+
+# Any Cast Mac Address
+# Configuration Not Found
+
+# Interface Loopback
+# Configuration Not Found
+
+# VRF Management
+# Configuration Not Found
+
+# Vlan
+sonic_vlans:
+  - vlan_id: '75'
+    description: <<Infra_Mgmt>>
+  - vlan_id: '76'
+    description: <<Platform_Mgmt>>
+  - vlan_id: '77'
+    description: <<PLATFORM_MGMT>>
+  - vlan_id: '78'
+    description: <<Ansible>>
+  - vlan_id: '79'
+    description: <<OOBMGMT_EXT>>
+  - vlan_id: '88'
+    description: <<NEW-TS_PAM>>
+  - vlan_id: '90'
+    description: <<Vmotion_VLAN>>
+  - vlan_id: '91'
+    description: <<Matrix_deployment_VLAN>>
+  - vlan_id: '92'
+    description: <<IremotePOC>>
+sonic_l3_vlan:
+  - name: Vlan75
+    ipv4:
+      addresses:
+        - address: 10.205.11.6/25
+
+# Vlan Id
+sonic_vlan_ids_mclag:
+  - name: Vlan75
+    configs:
+      - ip address 10.205.11.6/25
+
+# Vxlan
+# Configuration Not Found
+
+# Portchannel
+# Configuration Not Found
+
+# Mclag
+# Configuration Not Found
+
+# Interface Ethernet
+sonic_interfaces_eth:
+  - name: Eth1/1
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/1-R10_PP-B264_To_INDHYOOBFW01_Mgmt-Int-R8_PP-B146>>
+    mtu: '1500'
+  - name: Eth1/2
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/2-R10_PP-B245_To_INDHYOOBFW01_Lan3-R8_PP-B180>>
+    mtu: '1500'
+  - name: Eth1/3
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/3-R10_PP-B345_To_INDHYINFESX011_PORT03-R19_PP-B511>>
+    mtu: '1500'
+  - name: Eth1/4
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/4-R10_PP-B346_To_INDHYINFESX012_PORT03-R19_PP-B512>>
+    mtu: '1500'
+  - name: Eth1/5
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/5-R10_PP-B347_To_INDHYINFESX013_PORT03-R19_PP-B514>>
+    mtu: '1500'
+  - name: Eth1/6
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/6-R10_PP-B324_To_INDHYINFESX014_PORT03-R19_PP-B505>>
+    mtu: '1500'
+  - name: Eth1/7
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/7-R10_PP-B325_To_INDHYINFESX015_PORT03-R19_PP-B506>>
+    mtu: '1500'
+  - name: Eth1/8
+    mtu: '1500'
+  - name: Eth1/9
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/3-R10_PP-B345_To_INDHYINFESX011_PORT03-R19_PP-B511>>
+    mtu: '1500'
+  - name: Eth1/10
+    mtu: '1500'
+  - name: Eth1/11
+    mtu: '1500'
+  - name: Eth1/12
+    mtu: '1500'
+  - name: Eth1/13
+    mtu: '1500'
+  - name: Eth1/14
+    mtu: '1500'
+  - name: Eth1/15
+    mtu: '1500'
+  - name: Eth1/16
+    mtu: '1500'
+  - name: Eth1/17
+    mtu: '1500'
+  - name: Eth1/18
+    mtu: '1500'
+  - name: Eth1/19
+    mtu: '1500'
+  - name: Eth1/20
+    mtu: '1500'
+  - name: Eth1/21
+    mtu: '1500'
+  - name: Eth1/22
+    mtu: '1500'
+  - name: Eth1/23
+    mtu: '1500'
+  - name: Eth1/24
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/24-R10-11_PP-2_To_INDHYOOBSONICMGMTSW04_Eth1/24-R11-10_PP-2>>
+    mtu: '1500'
+  - name: Eth1/25
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/25_R10_To_INDHYSHDVOOBFW01_Mgmt__Int_R8_Fiber>>
+    mtu: '9100'
+  - name: Eth1/26
+    description: <<Connected_To_INDHYOOBSONICMGMTSW03_Eth1/26-R10-To_INDHYSHDVOOBFW01_Lan3-R8_Fiber>>
+    mtu: '1500'
+  - name: Eth1/27
+    mtu: '1500'
+  - name: Eth1/28
+    mtu: '1500'
+  - name: Eth1/29
+    mtu: '9100'
+  - name: Eth1/30
+    mtu: '9100'
+  - name: Eth1/31
+    mtu: '9100'
+  - name: Eth1/32
+    mtu: '9100'
+  - name: Eth1/33
+    mtu: '9100'
+  - name: Eth1/35
+    mtu: '9100'
+  - name: Eth1/36
+    mtu: '9100'
+  - name: Eth1/37
+    mtu: '9100'
+  - name: Eth1/38
+    mtu: '9100'
+  - name: Eth1/39
+    mtu: '9100'
+  - name: Eth1/40
+    mtu: '9100'
+  - name: Eth1/41
+    mtu: '9100'
+  - name: Eth1/42
+    mtu: '9100'
+  - name: Eth1/43
+    mtu: '9100'
+  - name: Eth1/44
+    mtu: '9100'
+  - name: Eth1/45
+    mtu: '1500'
+  - name: Eth1/46
+    mtu: '1500'
+  - name: Eth1/47
+    mtu: '1500'
+  - name: Eth1/48
+    mtu: '1500'
+  - name: Eth1/49
+    mtu: '9100'
+  - name: Eth1/50
+    mtu: '9100'
+  - name: Eth1/51
+    mtu: '9100'
+  - name: Eth1/52
+    mtu: '9100'
+  - name: Eth1/53
+    mtu: '9100'
+  - name: Eth1/54
+    mtu: '9100'
+  - name: Eth1/55
+    mtu: '9100'
+  - name: Eth1/56
+    mtu: '9100'
+sonic_interfaces_eth_ids:
+  - name: Eth1/1
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport access Vlan 75
+  - name: Eth1/2
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 76-79,88,90-92
+  - name: Eth1/3
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 75-79,88,90-92
+  - name: Eth1/4
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 75-79,88,90-92
+  - name: Eth1/5
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 75-79,88,90-92
+  - name: Eth1/6
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 75-79,88,90-92
+  - name: Eth1/7
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 75-79,88,90-92
+  - name: Eth1/8
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport access Vlan 75
+  - name: Eth1/9
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 76-79,88,90-92
+  - name: Eth1/10
+    configs:
+      - speed 1000
+      - shutdown
+      - switchport access Vlan 76
+  - name: Eth1/11
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/12
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/13
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/14
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/15
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport access Vlan 75
+  - name: Eth1/16
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/17
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/18
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/19
+    configs:
+      - speed 1000
+      - no shutdown
+  - name: Eth1/20
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/21
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/22
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/23
+    configs:
+      - speed 1000
+      - no shutdown
+  - name: Eth1/24
+    configs:
+      - speed 1000
+      - no shutdown
+      - switchport trunk allowed Vlan 1-4094
+  - name: Eth1/25
+    configs:
+      - speed 10000
+      - no shutdown
+      - switchport access Vlan 75
+  - name: Eth1/26
+    configs:
+      - speed 10000
+      - no shutdown
+      - switchport trunk allowed Vlan 76-79,88,90-92
+  - name: Eth1/27
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/28
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/29
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/30
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/31
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/32
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/33
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/35
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/36
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/37
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/38
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/39
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/40
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/41
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/42
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/43
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/44
+    configs:
+      - speed 10000
+      - shutdown
+  - name: Eth1/45
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/46
+    configs:
+      - speed 1000
+      - shutdown
+  - name: Eth1/47
+    configs:
+      - speed 1000
+      - shutdown
+      - switchport access Vlan 75
+  - name: Eth1/48
+    configs:
+      - speed 1000
+      - shutdown
+      - switchport access Vlan 75
+  - name: Eth1/49
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/50
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/51
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/52
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/53
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/54
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/55
+    configs:
+      - speed 100000
+      - shutdown
+  - name: Eth1/56
+    configs:
+      - speed 100000
+      - shutdown
+
+# Port Break
+# Configuration Not Found
+
+# IP Routes
+ip_routes:
+  - destination: 0.0.0.0/0
+    hop: 10.205.11.1
+
+# IP Prefix List
+# Configuration Not Found
+
+# Route Maps
+# Configuration Not Found
+
+# BGP Server
+# Configuration Not Found
+
+# NTP Server
+sonic_ntp_servers:
+  servers:
+    - server: 10.205.13.117
+      minpoll: '6'
+      maxpoll: '10'
+    - server: 10.205.13.118
+      minpoll: '6'
+      maxpoll: '10'
+
+# SNMP
+sonic_snmp_servers:
+  user_name: SNMPV3_USER
+  group_name: SNMPV3_Group
+  auth_type: md5
+  auth_password: ToBeFilled
+  priv_type: aes-128
+  priv_password: ToBeFilled
+  snmp_groups:
+    - group: SNMPV3_Group
+      v3_privileges: read test write test notify test
+      v3_type: priv
+  enable_trap: true
+  views:
+    - permission: test
+      oid: '.1'
+      type: included
+  snmp_server_host:
+    - host: 10.205.11.114
+      user: SNMPV3_USER
+      traps: noauth
+    - host: 10.205.11.241
+      user: SNMPV3_USER
+      traps: noauth
+    - host: 10.205.11.11
+      user: SNMPV3_USER
+      traps: noauth
+
+# IP Access List
+# Configuration Not Found
+
+# Timezone
+sonic_timezone: Asia/Kolkata
+
+# Logging Server
+sonic_logging_server:
+  - logging_server: 10.205.11.87
+    remote_port: 514
+  - logging_server: 10.205.11.241
+    remote_port: 514
+
+# Router OSPF
+# Configuration Not Found
+
+# BFD
+# Configuration Not Found
+
+# AAA
+sonic_aaa:
+  authentication:
+    data:
+      local: true
+      group: tacacs+
+      fail_through: true
+
+# Tacacs
+sonic_tacacs_server:
+  auth_type: pap
+  key: ToBeFilled
+  timeout: '5'
+  servers:
+    host:
+      - name: 10.205.11.240
+        port: '49'
+        auth_type: pap
+        priority: '1'
+        timeout: '5'
+        key: ToBeFilled
+
+# Users
+sonic_users:
+  - name: swadmin
+    role: admin
+    password: ToBeFilled
+    update_password: always
+
+# SFlow
+# Configuration Not Found

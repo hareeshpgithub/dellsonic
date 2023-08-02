@@ -1,0 +1,7 @@
+- name: "Push configs for bgp_af_extra"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: bgp_af_extra.j2
+    save: true
+  when: sonic_bgp_af_extra is defined and sonic_bgp_af_extra

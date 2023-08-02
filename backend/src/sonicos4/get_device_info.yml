@@ -1,0 +1,11 @@
+---
+- name: Get Device Info
+  hosts: all
+  gather_facts: False
+  connection: httpapi
+  collections:
+    - dellemc.enterprise_sonic
+  tasks:
+    - name: Get Device Info
+      include_role:
+        name: device_info

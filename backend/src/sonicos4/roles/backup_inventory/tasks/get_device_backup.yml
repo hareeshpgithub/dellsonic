@@ -1,0 +1,59 @@
+- name: Create / Check backup directory
+  file:
+    path: "{{config_path}}"
+    state: directory
+    recurse: yes
+
+- name: Get Date Time
+  include_role:
+    name: get_variables
+
+- name: Get System Version
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - show version
+  register: version_info
+
+- name: Get System Information
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - show system
+  register: system_info
+
+- name: Get Configuration
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands: show running-configuration
+  register: running_configuration
+
+- name: Format System Version
+  set_fact:
+    formatted_version_info: "{{ version_info.stdout | join('\n') | replace(\"['\", '') }}"
+
+- name: Format System Information
+  set_fact:
+    formatted_system_info: "{{ system_info.stdout | join('\n') | replace(\"['\", '') }}"
+
+- name: Format Configuration
+  set_fact:
+    formatted_configuration: "{{ running_configuration.stdout  | join('\n') | replace(\"['\", '')  }}"
+
+- name: Copy Output
+  copy:
+    content: |
+      # This file contains confidential and proprietary information. 
+      # Unauthorized use, reproduction, or distribution may result in legal penalties.
+      # Date & Time: {{ current_date_time }}
+
+      ===   VERSION INFORMATION   ===
+      {{ formatted_version_info }}
+
+      ===    SYSTEM INFORMATION   ===
+      {{ formatted_system_info }}
+
+      ===   BACKUP CONFIGURATION  ===
+      {{ formatted_configuration }}
+
+    dest: "{{config_path}}/{{inventory_hostname}}.aarohi.device.backup.txt"

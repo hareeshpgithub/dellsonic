@@ -1,0 +1,5 @@
+---
+- name: Create portchannels configuration
+  dellemc.enterprise_sonic.sonic_lag_interfaces:
+    config: "{{sonic_portchannels}}"
+  when: sonic_portchannels is defined and sonic_portchannels

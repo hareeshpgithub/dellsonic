@@ -1,0 +1,20 @@
+---
+- name: Update system attributes hostname, interface naming and anycast_address
+  dellemc.enterprise_sonic.sonic_system:
+    config:
+      hostname: "{{host_name}}"
+      interface_naming: standard
+      anycast_address:
+        ipv6: true
+        ipv4: true
+        mac_address: "{{ anycast_mac_address }}"
+    state: merged
+  when: anycast_mac_address is defined and anycast_mac_address
+
+- name: Update system attributes hostname and interface_naming
+  dellemc.enterprise_sonic.sonic_system:
+    config:
+      hostname: "{{host_name}}"
+      interface_naming: standard
+    state: merged
+  when: anycast_mac_address is not defined

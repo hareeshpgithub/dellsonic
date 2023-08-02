@@ -1,0 +1,4 @@
+---
+- include_tasks: configure_mclag.yml
+- include_tasks: update_mclag.yml
+- include_tasks: associate_mclag_po.yml

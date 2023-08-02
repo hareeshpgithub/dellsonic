@@ -1,0 +1,9 @@
+- name: Create Loopback Interfaces
+  dellemc.enterprise_sonic.sonic_interfaces:
+    config: "{{sonic_loopback_interfaces}}"
+  when: sonic_loopback_interfaces is defined and sonic_loopback_interfaces
+
+- name: Loopback Interfaces IPV4
+  dellemc.enterprise_sonic.sonic_l3_interfaces:
+    config: "{{sonic_l3_loopback_interfaces}}"
+  when: sonic_l3_loopback_interfaces is defined and sonic_l3_loopback_interfaces

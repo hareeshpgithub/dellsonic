@@ -1,0 +1,10 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{% if sonic_interfaces_eth_ids is defined and sonic_interfaces_eth_ids %}
+    {% for sonic_interfaces_eth_id in sonic_interfaces_eth_ids %}
+interface {{ sonic_interfaces_eth_id.name }}
+        {% for config in sonic_interfaces_eth_id.configs %}
+ {{ config }}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+{# ethernet end #}

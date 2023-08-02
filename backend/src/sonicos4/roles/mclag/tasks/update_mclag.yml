@@ -1,0 +1,20 @@
+---
+- name: "update mclag attributes"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    lines:
+      - delay-restore "{{ item.delay_restore }}"
+    parents: ["mclag domain {{item.domain_id}}"]
+    save: true
+  loop: "{{ sonic_mclag_ids }}"
+  when: sonic_mclag_ids is defined and sonic_mclag_ids
+
+- name: "update vlan configurations"
+  vars:
+    ansible_connection: network_cli
+    sonic_vlan_ids: sonic_vlan_ids_mclag
+  dellemc.enterprise_sonic.sonic_config:
+    src: vlans_cfg.j2
+    save: true
+  when: sonic_vlan_ids_mclag is defined and sonic_vlan_ids_mclag

@@ -1,0 +1,4 @@
+---
+- include_tasks: create_po_src.yml
+- include_tasks: create_po.yml
+- include_tasks: update_port_channel.yml

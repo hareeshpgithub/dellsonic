@@ -1,0 +1,14 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{#######################################
+
+#Purpose: update portchannel configs
+
+#######################################}
+{% if sonic_portchannels_ids is defined and sonic_portchannels_ids %}
+    {% for item in sonic_portchannels_ids %}
+interface PortChannel {{ item.po_id }}
+          {% for config in item.configs %}
+ {{ config }}
+          {% endfor %}
+    {% endfor %}
+{% endif %}

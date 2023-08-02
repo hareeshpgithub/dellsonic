@@ -1,0 +1,8 @@
+---
+- name: "update ethernet configurations"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: ethernet_cfg.j2
+    save: true
+  when: sonic_interfaces_eth_ids is defined and sonic_interfaces_eth_ids

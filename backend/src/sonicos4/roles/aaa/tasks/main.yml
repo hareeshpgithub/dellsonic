@@ -1,0 +1,5 @@
+- name: Merge aaa configurations
+  dellemc.enterprise_sonic.sonic_aaa:
+    config: "{{ sonic_aaa }}"
+    state: merged
+  when: sonic_aaa is defined and sonic_aaa

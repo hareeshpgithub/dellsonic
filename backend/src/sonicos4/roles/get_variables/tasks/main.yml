@@ -1,0 +1,13 @@
+---
+- name: Gather facts
+  setup:
+
+- name: Format Date & Time
+  set_fact:
+    formatted_date: "{{ ansible_date_time.date.split('-')[2] }}-{{ ansible_date_time.date.split('-')[1] }}-{{ ansible_date_time.date.split('-')[0] }}"
+    formatted_tine: "{{ ansible_date_time.time }}"
+
+- name: Get System Details
+  set_fact:
+    current_date_time: "{{ formatted_date }} {{ formatted_tine }}"
+    current_date_time_unix: "{{ ansible_date_time.epoch }}"

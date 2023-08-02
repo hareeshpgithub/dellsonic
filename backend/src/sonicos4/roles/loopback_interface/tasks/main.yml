@@ -1,0 +1,6 @@
+---
+# tasks file for loopback interfaces
+- include_tasks: create_loopback_inf.yml
+- include_tasks: update_loopback_inf.yml
+  vars:
+    ansible_connection: network_cli

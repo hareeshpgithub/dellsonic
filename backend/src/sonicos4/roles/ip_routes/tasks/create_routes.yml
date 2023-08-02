@@ -1,0 +1,7 @@
+- name: "Create  Ip Routes"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: create_routes.j2
+    save: true
+  when: ip_routes is defined and ip_routes

@@ -1,0 +1,4 @@
+- name: Create BGP configuration
+  dellemc.enterprise_sonic.sonic_bgp:
+    config: "{{sonic_bgp}}"
+  when: sonic_bgp is defined and sonic_bgp

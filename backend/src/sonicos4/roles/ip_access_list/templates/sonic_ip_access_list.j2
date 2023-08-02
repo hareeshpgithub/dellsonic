@@ -1,0 +1,15 @@
+{% if sonic_ip_access_list is defined and sonic_ip_access_list %}
+{% for ip_access_list in sonic_ip_access_list %}
+ip access-list {{ip_access_list.name}}
+  {% for item in ip_access_list.permit_entries %}
+    {% if item.allow is defined %}
+ seq {{ item.seq }} permit {{ item.protocol }} {{ 'host' if item.host else '' }} {{ item.ip }} any eq {{ item.allow }}
+    {% else %}
+ seq {{ item.seq }} permit {{ item.protocol }} {{ 'host' if item.host else '' }} {{ item.ip }} any
+    {% endif %}
+  {% endfor %}
+  {% for item in ip_access_list.deny_entries %}
+ seq {{ item.seq }} deny {{ item.protocol }} any any
+  {% endfor %}
+{% endfor %}
+{% endif %}

@@ -1,0 +1,47 @@
+- name: Configure Backup Folder
+  file:
+    path: "{{config_path}}"
+    state: directory
+    recurse: yes
+
+- name: Get System Date Time
+  include_role:
+    name: get_variables
+
+- name: Get System Version
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - show version
+  register: version_info
+
+- name: Get System Information
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - show system
+  register: system_info
+
+- name: Format System Version
+  set_fact:
+    formatted_version_info: "{{ version_info.stdout | join('\n') | replace(\"['\", '') }}"
+
+- name: Format System Information
+  set_fact:
+    formatted_system_info: "{{ system_info.stdout | join('\n') | replace(\"['\", '') }}"
+
+- name: Copy Output
+  copy:
+    content: |
+      # This file contains confidential and proprietary information. Unauthorized use, reproduction, or distribution may result in legal penalties.
+      # Created using Aarohi IT Solutions Private Limited Property Software.
+      # Date & Time: {{ current_date_time }}
+      # Unix Timestamp: {{ current_date_time_unix }}
+
+      === VERSION INFORMATION ===
+      {{ formatted_version_info }}
+
+      === SYSTEM INFORMATION ===
+      {{ formatted_system_info }}
+
+    dest: "{{config_path}}/{{inventory_hostname}}.aarohi.device.info.txt"

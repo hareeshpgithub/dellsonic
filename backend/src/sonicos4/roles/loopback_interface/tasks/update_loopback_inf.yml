@@ -1,0 +1,7 @@
+- name: "update loopback interface attributes"
+  dellemc.enterprise_sonic.sonic_config:
+    lines: "{{item.configs}}"
+    parents: ["interface Loopback {{ item.lb_id }}"]
+    save: true
+  when: item.configs is defined and item.configs
+  with_items: "{{ sonic_loopback_interface_ids }}"

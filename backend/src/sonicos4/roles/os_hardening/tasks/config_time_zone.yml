@@ -1,0 +1,8 @@
+- name: "Configure timezone"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    lines:
+      - clock timezone {{sonic_timezone}}
+  when: sonic_timezone is defined and sonic_timezone
+# Support's Change/Incremental Changes

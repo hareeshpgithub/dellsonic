@@ -1,0 +1,7 @@
+---
+- name: "Push configs for neighbors_af_extra"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: neighbors_af_extra.j2
+    save: true

@@ -1,0 +1,5 @@
+---
+# tasks file for os_hardening
+- include_tasks: get_device_backup.yml
+  vars:
+    connection: network_cli

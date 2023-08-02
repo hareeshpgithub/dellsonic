@@ -1,0 +1,4 @@
+- name: Create BGP Neighbors configuration
+  dellemc.enterprise_sonic.sonic_bgp_neighbors:
+    config: "{{sonic_bgp_neighbors}}"
+  when: sonic_bgp_neighbors is defined and sonic_bgp_neighbors

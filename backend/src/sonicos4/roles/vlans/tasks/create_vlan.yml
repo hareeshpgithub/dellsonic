@@ -1,0 +1,22 @@
+---
+- name: Create interface VLAN configuration
+  dellemc.enterprise_sonic.sonic_vlans:
+    config: "{{sonic_vlans}}"
+    state: merged
+  when: sonic_vlans is defined and sonic_vlans
+
+- name: "update vlan extra configurations"
+  vars:
+    ansible_connection: network_cli
+    sonic_vlan_ids: sonic_vlan_ids_extras
+  dellemc.enterprise_sonic.sonic_config:
+    src: vlans_extras.j2
+    save: true
+  when: sonic_vlan_ids_extras is defined and sonic_vlan_ids_extras
+
+- name: VLAN Interfaces L3 configs IPV4 & IPV6
+  vars:
+    ansible_connection: httpapi
+  dellemc.enterprise_sonic.sonic_l3_interfaces:
+    config: "{{sonic_l3_vlan}}"
+  when: sonic_l3_vlan is defined and sonic_l3_vlan and sonic_vlan_ids_mclag is not defined

@@ -1,0 +1,14 @@
+{% set file_contents = lookup('file', 'configs_backup/' + inventory_hostname + '.txt') %}
+{% for line in file_contents.split('\n') %}
+  {% if line|regex_search('^ip\s+anycast-mac-address') %}
+    {{ line }}
+  {% endif %}
+{% endfor %}
+
+
+    {###
+     {{ line|trim|replace('\n', '') }}
+     {% set result = line.split()[2] %}
+    {% else %}
+    {{ line }}
+    ###}

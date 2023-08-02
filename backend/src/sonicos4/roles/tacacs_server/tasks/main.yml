@@ -1,0 +1,6 @@
+---
+- name: Merge tacacs configurations
+  dellemc.enterprise_sonic.sonic_tacacs_server:
+    config: "{{ sonic_tacacs_server }}"
+    state: merged
+  when: sonic_tacacs_server is defined and sonic_tacacs_server

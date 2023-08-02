@@ -1,0 +1,6 @@
+---
+# tasks file for router ospf
+- include_tasks: create_router_ospf.yml
+  vars:
+    ansible_connection: network_cli
+  when: router_ospf is defined

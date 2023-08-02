@@ -1,0 +1,10 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{% if sonic_bgp_af_extra is defined and sonic_bgp_af_extra %}
+router bgp {{ bgp_asn }}
+        {% for afis_item in sonic_bgp_af_extra.address_family.afis %}
+ address-family {{afis_item.afi}} {{afis_item.safi}}  
+            {% for config in afis_item.configs %}
+  {{ config }}
+            {% endfor %}
+        {% endfor %}
+{% endif %}

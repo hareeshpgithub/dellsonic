@@ -1,0 +1,5 @@
+---
+- include_tasks: create_vlan.yml
+- include_tasks: config_param.yml
+  vars:
+    ansible_connection: network_cli

@@ -1,0 +1,8 @@
+---
+- name: "configure ntp servers"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: sonic_ntp_server.j2
+    save: true
+  when: sonic_ntp_servers is defined and sonic_ntp_servers

@@ -1,0 +1,4 @@
+- name: Merge users configurations
+  dellemc.enterprise_sonic.sonic_users:
+    config: "{{sonic_users}}"
+  when: sonic_users is defined and sonic_users

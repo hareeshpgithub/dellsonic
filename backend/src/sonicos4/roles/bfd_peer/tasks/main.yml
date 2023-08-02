@@ -1,0 +1,9 @@
+- name: "Update bfd_peer"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    lines: "{{item.configs}}"
+    parents: ["bfd", "peer {{item.peer_ip}} interface {{item.interface}}"]
+    save: true
+  loop: "{{bfd_peer}}"
+  when: bfd_peer is defined and bfd_peer

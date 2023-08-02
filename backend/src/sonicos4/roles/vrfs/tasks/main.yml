@@ -1,0 +1,5 @@
+- name: Configure VRFs
+  dellemc.enterprise_sonic.sonic_vrfs:
+    config:
+      - name: "{{sonic_vrf_name}}"
+  when: sonic_vrf_name is defined and sonic_vrf_name

@@ -1,0 +1,7 @@
+- name: "Configure logging server"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: sonic_logging_server.j2
+    save: true
+  when: sonic_logging_server is defined and sonic_logging_server

@@ -1,0 +1,4 @@
+- name: "create router ospf"
+  dellemc.enterprise_sonic.sonic_config:
+    lines: "{{router_ospf['configs']}}"
+    save: true

@@ -1,0 +1,8 @@
+---
+- name: "create portchannel with mode active"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: create_po_with_active.j2
+    save: true
+  when: sonic_portchannels_ids is defined and sonic_portchannels_ids

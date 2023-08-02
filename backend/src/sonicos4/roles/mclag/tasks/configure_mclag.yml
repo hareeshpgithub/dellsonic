@@ -1,0 +1,6 @@
+---
+- name: Configure mclag
+  dellemc.enterprise_sonic.sonic_mclag:
+    config: "{{sonic_mclag}}"
+    state: merged
+  when: sonic_mclag is defined and sonic_mclag

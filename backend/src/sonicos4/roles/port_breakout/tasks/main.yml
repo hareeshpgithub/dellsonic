@@ -1,0 +1,6 @@
+---
+- name: Merge port breakout configurations
+  dellemc.enterprise_sonic.sonic_port_breakout:
+    config: "{{sonic_port_breakout}}"
+    state: merged
+  when: sonic_port_breakout is defined

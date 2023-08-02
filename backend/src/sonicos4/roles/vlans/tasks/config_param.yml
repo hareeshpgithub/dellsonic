@@ -1,0 +1,7 @@
+- name: "update vlan configurations"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: vlans_cfg.j2
+    save: true
+  when: sonic_vlan_ids is defined and sonic_vlan_ids

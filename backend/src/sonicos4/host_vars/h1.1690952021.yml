@@ -1,0 +1,64 @@
+
+# Host Name
+host_name: INDMYOOBCESW01
+sonic_vlans:
+  - vlan_id: '71'
+    description: mgmt_vlan
+sonic_l3_vlan:
+  - name: Vlan71
+    ipv4:
+      addresses:
+        - address: 10.205.142.42/24
+sonic_vlan_ids_mclag:
+  - name: Vlan71
+    configs:
+      - ip address 10.205.142.42/24
+sonic_interfaces_eth:
+  - name: Eth1/1
+    description: SrcOOBCESW01_Gi0/1_R3.3A.01-DestOOBFW01_LAN1.R2.2B.001
+    mtu: 9100
+  - name: Eth1/2
+    description: SrcOOBCESW01_Gi0/2_DestITILSW01_DCM_INFYFACING_FWINT_Gi1/2
+    mtu: 9100
+  - name: Eth1/3
+    description: SrcOOBCESW01_Gi0/3_R3.3A.260-DestDEVMGSW01_Gi1/10_R3.3A.261
+    mtu: 9100
+  - name: Eth1/24
+    description: SrcOOBCESW01_Gi0/1_R3.3A.01-DestOOBFW01_LAN1.R2.2B.001
+    mtu: 9100
+sonic_interfaces_eth_ids:
+  - name: Eth1/1
+    configs:
+      - shutdown
+      - switchport access vlan 50
+  - name: Eth1/2
+    configs:
+      - switchport access vlan 50
+  - name: Eth1/3
+    configs:
+      - switchport access vlan 71
+  - name: Eth1/24
+    configs:
+      - switchport access vlan 50
+ip_routes:
+  - destination: 0.0.0.0/0
+    hop: 10.205.142.1
+sonic_ntp_servers:
+  servers:
+    - server: 10.205.143.116
+      minpoll: 6
+      maxpoll: 10
+sonic_logging_server:
+  - logging_server: 10.205.11.21
+    remote_port: 514
+  - logging_server: 10.205.11.32
+    remote_port: 514
+  - logging_server: 10.205.11.87
+    remote_port: 514
+  - logging_server: 10.205.11.241
+    remote_port: 514
+sonic_users:
+  - name: swadmin
+    role: admin
+    password: ToBeFilled
+    update_password: always

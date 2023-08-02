@@ -1,0 +1,9 @@
+- name: Create BGP neighbor address-family and its parameters
+  dellemc.enterprise_sonic.sonic_bgp_neighbors_af:
+    config: "{{sonic_bgp_neighbors_af}}"
+  when: sonic_bgp_neighbors_af is defined and sonic_bgp_neighbors_af
+
+- name: Create BGP neighbor address-family and its parameters
+  dellemc.enterprise_sonic.sonic_bgp_neighbors_af:
+    config: "{{sonic_bgp_neighbors_af}}"
+  when: sonic_bgp_neighbors_af is defined and sonic_bgp_neighbors_af

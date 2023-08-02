@@ -1,0 +1,7 @@
+- name: "configure ip access-list"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: sonic_ip_access_list.j2
+    save: true
+  when: sonic_ip_access_list is defined and sonic_ip_access_list

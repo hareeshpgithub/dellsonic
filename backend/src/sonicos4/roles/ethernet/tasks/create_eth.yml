@@ -1,0 +1,18 @@
+---
+- name: sonic_interfaces configuration
+  dellemc.enterprise_sonic.sonic_interfaces:
+    config: "{{sonic_interfaces_eth}}"
+  when: sonic_interfaces_eth is defined and sonic_interfaces_eth
+
+- name: "ethernet switchport trunk allowed Vlan"
+  dellemc.enterprise_sonic.sonic_l2_interfaces:
+    config: "{{sonic_interfaces_eth_allowed_vlans}}"
+  when: sonic_interfaces_eth_allowed_vlans is defined and sonic_interfaces_eth_allowed_vlans
+  failed_when: "'cannot be converted to an int' not in ethernet_allowed_vlans.msg"
+
+- name: Interfaces ethernet L3 configs
+  vars:
+    ansible_connection: httpapi
+  dellemc.enterprise_sonic.sonic_l3_interfaces:
+    config: "{{sonic_l3_ethernet_interfaces}}"
+  when: sonic_l3_ethernet_interfaces is defined and sonic_l3_ethernet_interfaces
