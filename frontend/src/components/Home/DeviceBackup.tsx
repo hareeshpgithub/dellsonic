@@ -17,6 +17,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { red, blue, green, lightBlue, orange } from "@mui/material/colors";
 import axios from "axios";
 import { APIS } from "../../config";
+import socket from "./websocket";
 const theme = createTheme({
   palette: {
     primary: blue,
@@ -63,7 +64,6 @@ const useStyles = makeStyles({
   },
 });
 
-const socket = new WebSocket("ws://localhost:9092");
 socket.addEventListener("open", () => {});
 
 const DeviceBackup = (props: { location: { state: any } }) => {
