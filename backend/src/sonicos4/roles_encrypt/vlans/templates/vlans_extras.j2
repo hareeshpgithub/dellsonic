@@ -1,0 +1,10 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{% if sonic_vlan_ids_extras is defined and sonic_vlan_ids_extras %}
+    {% for item in sonic_vlan_ids_extras %}
+interface {{ item.name }}
+        {% for config in item.configs %}
+ {{ config }}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+{# Vlan end #}

@@ -1,0 +1,8 @@
+{% if sonic_ntp_servers is defined and sonic_ntp_servers %}
+    {% for item in sonic_ntp_servers.servers %}
+ntp server {{item.server}} minpoll {{item.minpoll}} maxpoll {{item.maxpoll}}
+    {% endfor %}
+    {% if sonic_ntp_servers.source_interface is defined and sonic_ntp_servers.source_interface %}
+ntp source-interface {{sonic_ntp_servers.source_interface}}
+    {% endif %}
+{% endif %}

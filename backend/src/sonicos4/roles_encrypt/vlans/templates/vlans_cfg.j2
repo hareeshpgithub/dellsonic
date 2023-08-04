@@ -1,0 +1,17 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{#######################################
+
+#Purpose:
+Vlan configuration for SONiC devices
+
+#######################################}
+{# Vlan start #}
+{% if sonic_vlan_ids is defined and sonic_vlan_ids %}
+    {% for sonic_vlan_id in sonic_vlan_ids %}
+interface {{ sonic_vlan_id.name }}
+        {% for config in sonic_vlan_id.configs %}
+ {{ config }}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+{# Vlan end #}

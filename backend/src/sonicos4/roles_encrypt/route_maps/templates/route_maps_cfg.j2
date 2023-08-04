@@ -1,0 +1,7 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{% if sonic_route_maps_cli is defined and sonic_route_maps_cli %}
+        {% for sonic_route_map in sonic_route_maps_cli %}
+        route-map {{ sonic_route_map.name }} {{ 'permit' if sonic_route_map.permit else 'deny' }} {{ sonic_route_map.seq }}
+        set ip next-hop {{ sonic_route_map.match_ip_prefix_list }}
+        {% endfor %}
+{% endif %}

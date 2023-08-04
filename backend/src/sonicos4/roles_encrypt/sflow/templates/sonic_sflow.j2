@@ -1,0 +1,12 @@
+{% if sonic_sflow is defined and sonic_sflow %}
+  {% if sonic_sflow.collector is defined and sonic_sflow.collector %}
+    {% for ip in sonic_sflow.collector %}
+      sflow collector {{ip.ip}} {{ip.port}} vrf {{ip.vrf}}
+    {% endfor %}
+  {% endif %}
+  {% if sonic_sflow.agent is defined and sonic_sflow.agent %}
+    {% for loopback in sonic_sflow.agent %}
+      sflow agent-id Loopback {{loopback.loopback}}
+    {% endfor %}
+  {% endif %}
+{% endif %}

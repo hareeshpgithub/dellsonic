@@ -1,0 +1,11 @@
+
+{% if sonic_logging_server is defined and sonic_logging_server %}
+  {% for logging_server in sonic_logging_server %}
+    
+    {% if logging_server.source_interface is defined %}
+      logging server {{logging_server.logging_server}} remote-port {{logging_server.remote_port}} source-interface {{logging_server.source_interface}}
+    {% else %}
+      logging server {{logging_server.logging_server}} remote-port {{logging_server.remote_port}}
+    {% endif %}
+  {% endfor %}
+{% endif %}

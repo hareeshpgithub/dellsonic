@@ -1,0 +1,13 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+{#######################################
+
+#Purpose: create port channel
+
+#######################################}
+{% if sonic_portchannels_ids is defined and sonic_portchannels_ids %}
+    {% for item in sonic_portchannels_ids %}
+      {% if item.mode_active %}
+interface PortChannel {{ item.po_id }} mode active
+      {% endif %}
+    {% endfor %}
+{% endif %}

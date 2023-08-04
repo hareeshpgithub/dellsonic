@@ -1,0 +1,5 @@
+{% if sonic_spanning_tree is defined and sonic_spanning_tree %}
+    {% if sonic_spanning_tree.mode is defined and sonic_spanning_tree.mode%}
+        spanning-tree mode {{sonic_spanning_tree.mode}}
+    {% endif %}
+{% endif %}
