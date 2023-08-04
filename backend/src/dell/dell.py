@@ -233,7 +233,8 @@ def device_safe_commands(
         file_output_path = os.path.join("host_Vars", file_output_name)
         if os.path.exists(file_output_path):
             new_file_name = f"{hostname}.{int(time.time())}.yml"
-            new_file_path = os.path.join("host_Vars", new_file_name)
+            # new_file_path = os.path.join("host_Vars", new_file_name)
+            new_file_path = os.path.join("../", "sonicos4", "host_Vars", new_file_name)
             os.rename(file_output_path, new_file_path)
 
         shutil.copyfile(file_input_path, file_output_path)
