@@ -1,1 +1,0 @@
-At this point, only the Dell team is contributing. A guide shall be provided when it is opened for external maintainers.
