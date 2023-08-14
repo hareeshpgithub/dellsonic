@@ -1,7 +1,8 @@
 ---
-- name: "Push configs for prefix_list"
+- name: "Configuring Prefix List"
   vars:
     ansible_connection: network_cli
   dellemc.enterprise_sonic.sonic_config:
     src: prefix_list_cfg.j2
     save: true
+  when: sonic_prefix_list_cli is defined

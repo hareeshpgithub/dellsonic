@@ -1,0 +1,7 @@
+- name: "Configure Port Groups"
+  vars:
+    ansible_connection: network_cli
+  dellemc.enterprise_sonic.sonic_config:
+    src: sonic_port_group.j2
+    save: true
+  when: sonic_port_group is defined and sonic_port_group

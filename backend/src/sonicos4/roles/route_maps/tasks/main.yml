@@ -1,7 +1,8 @@
 ---
-- name: "Push configs for route_maps_cfg"
+- name: "Configuring Route Maps"
   vars:
     ansible_connection: network_cli
   dellemc.enterprise_sonic.sonic_config:
     src: route_maps_cfg.j2
     save: true
+  when: sonic_route_maps_cli is defined

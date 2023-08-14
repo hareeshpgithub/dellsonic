@@ -20,6 +20,10 @@
       include_role:
         name: os_hardening
 
+    - name: Run Port Group
+      include_role:
+        name: port_group
+
     - name: Configure Port Breakout
       include_role:
         name: port_breakout

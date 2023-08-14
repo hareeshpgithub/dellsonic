@@ -1,0 +1,6 @@
+
+{% if sonic_port_group is defined and sonic_port_group %}
+    {% for item in sonic_port_group %}
+        port-group {{item.id}} speed {{item.speed}}
+    {% endfor %}
+{% endif %}
