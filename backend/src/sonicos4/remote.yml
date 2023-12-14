@@ -1,0 +1,11 @@
+- name: Configure Dell SonicOS Switch
+  hosts: inventory
+  gather_facts: False
+  connection: httpapi
+  collections:
+    - dellemc.enterprise_sonic
+
+  tasks:
+    - name: Get Monitoring Information
+      include_role:
+        name: remote_execution

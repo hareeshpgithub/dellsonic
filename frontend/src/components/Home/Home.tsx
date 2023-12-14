@@ -40,6 +40,7 @@ import ExcelYml from "./ExcelUpload";
 import DeviceInfo from "./DeviceInfo";
 import DeviceBackup from "./DeviceBackup";
 import NewConfiguration from "./NewConfiguration";
+import UploadImage from "./UploadImage";
 import Deploy from "./Deploy";
 import Footer from "./Footer";
 
@@ -153,7 +154,7 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {}, [state.time, userCompany]);
+  useEffect(() => { }, [state.time, userCompany]);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -254,6 +255,10 @@ export default function Home() {
             <ListItemText primary="Device Backup" />
           </ListItemButton>
           {/* End */}
+
+
+
+
           {/* Device Deploy Button */}
           <ListItemButton
             onClick={() => navigateToPage("deploy_configuration")}
@@ -264,6 +269,19 @@ export default function Home() {
             <ListItemText primary="Deploy Inventory" />
           </ListItemButton>
           {/* End */}
+
+
+
+          {/* Device Backup Button */}
+          <ListItemButton onClick={() => navigateToPage("update_device_image")}>
+            <ListItemIcon>
+              <BackupTableOutlined />
+            </ListItemIcon>
+            <ListItemText primary="Update Sonic OS" />
+          </ListItemButton>
+          {/* End */}
+
+
           <Divider />
           {/* <ListItemButton>
             <ListItemIcon>
@@ -334,6 +352,13 @@ export default function Home() {
             }}
           />
         )}
+        {currentPage() === "update_device_image" && (
+          <UploadImage
+            location={{
+              state: state,
+            }}
+          />
+        )}
       </Main>
       <Dialog
         open={openConfirm}
@@ -376,7 +401,14 @@ export default function Home() {
           <Button onClick={closeError}>Ok</Button>
         </DialogActions>
       </Dialog>
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   );
 }
+
+
+// hp0001
+// 6XNHJt
+
+//   *.local, 169.254 / 16
+

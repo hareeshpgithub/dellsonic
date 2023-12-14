@@ -1,0 +1,26 @@
+---
+# tasks file for os_hardening
+- include_tasks: get_cpu.yml
+  vars:
+    connection: network_cli
+  when: monitor_cpu is defined and monitor_cpu
+
+- include_tasks: get_memory.yml
+  vars:
+    connection: network_cli
+  when: monitor_memory is defined and monitor_memory
+
+- include_tasks: get_interface.yml
+  vars:
+    connection: network_cli
+  when: monitor_interface is defined and monitor_interface
+
+- include_tasks: get_fans.yml
+  vars:
+    connection: network_cli
+  when: monitor_fan is defined and monitor_fan
+
+- include_tasks: get_temperature.yml
+  vars:
+    connection: network_cli
+  when: monitor_temperature is defined and monitor_temperature

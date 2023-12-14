@@ -20,7 +20,7 @@ export default function Footer() {
         p: 2,
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" fixed>
         <Box mt={0}>
           <Typography variant="h6" noWrap component="div" align="center">
             <Link

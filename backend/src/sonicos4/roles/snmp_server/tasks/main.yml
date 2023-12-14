@@ -5,3 +5,4 @@
     src: sonic_snmp_server.j2
     save: true
   when: sonic_snmp_servers is defined and sonic_snmp_servers
+  ignore_errors: true

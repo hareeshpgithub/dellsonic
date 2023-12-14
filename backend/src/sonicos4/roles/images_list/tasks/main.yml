@@ -1,0 +1,4 @@
+---
+- include_tasks: get_images_list.yml
+  vars:
+    connection: network_cli

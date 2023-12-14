@@ -1,0 +1,22 @@
+- name: Create / Check backup directory
+  file:
+    path: "{{config_path}}"
+    state: directory
+    recurse: yes
+
+- name: Get Interface Information
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - show interface status
+  register: interface_info
+
+- name: Format Interface Information
+  set_fact:
+    formatted_interface_info: "{{ interface_info.stdout | join('\n') | replace(\"['\", '') }}"
+
+- name: Copy Interface Output
+  copy:
+    content: |
+      {{ formatted_interface_info }}
+    dest: "{{config_path}}/{{inventory_hostname}}.interface.txt"

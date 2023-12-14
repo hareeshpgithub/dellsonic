@@ -1,0 +1,22 @@
+- name: Create / Check backup directory
+  file:
+    path: "{{config_path}}"
+    state: directory
+    recurse: yes
+
+- name: Get Fans Information
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - show platform fanstatus
+  register: fan_status
+
+- name: Format Fan Status Information
+  set_fact:
+    formatted_fan_info: "{{ fan_status.stdout | join('\n') | replace(\"['\", '') }}"
+
+- name: Copy Memory Output
+  copy:
+    content: |
+      {{ formatted_fan_info }}
+    dest: "{{config_path}}/{{inventory_hostname}}.fan.txt"

@@ -1,0 +1,7 @@
+- name: Execute Remote Command
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - "configure terminal"
+      - "interface-naming standard"
+      - "exit"

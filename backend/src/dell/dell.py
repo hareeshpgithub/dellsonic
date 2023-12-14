@@ -58,6 +58,7 @@ ansible_extra_vars = "--extra-vars"
 ansible_device_information_yml = "get_device_info.yml"
 ansible_device_backup_yml = "get_device_backup.yml"
 ansible_device_deploy_yml = "setup_config.yml"
+ansible_image_list_yml = "get_image_list.yml"
 info_file = "info"
 backup_file = "backup"
 deploy_file = "deploy"
@@ -201,6 +202,69 @@ def update_document(
 
 
 # endregion
+
+
+def get_images_list(hostname, ip_address, device_user, device_password):
+    # Change working Directory
+    change_working_directory_sonicos4()
+
+    extra_vars = f"{ansible_user}{device_user} {ansible_password}{device_password}"
+    ansible_file = ansible_image_list_yml
+
+    ansible_command = [
+        ansible_playbook,
+        ansible_inventory_argument,
+        ansible_hosts_file,
+        ansible_extra_vars,
+        extra_vars,
+        ansible_file,
+        license_key_command,
+        verbose,
+    ]
+
+    # Create hosts file
+    create_hosts_file(hostname, ip_address)
+
+    # Remove Old License If Exists
+    remove_license()
+
+    # Create License Key
+    create_license()
+
+    process = subprocess.Popen(
+        ansible_command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+    )
+
+    try:
+        for line in iter(process.stdout.readline, b""):
+            decoded_line = line.decode().strip()
+            cleaned_line = re.sub(log_file_clean, "", decoded_line)
+            print(cleaned_line, flush=True)
+        process.wait()
+
+        # Remove License & Update Database
+        remove_license()
+
+        output_file_name = f"{hostname}.aarohi.image.info.txt"
+        output_file_path = os.path.join(output_folder, output_file_name)
+
+        with open(output_file_path, "r") as device_content:
+            output = device_content.read()
+
+    except KeyboardInterrupt:
+        process.terminate()
+        process.wait()
+
+        # Remove License & Update Database
+        remove_license()
+
+    except Exception as e:
+        # log += str(e)
+        print("error" + e)
+        # Remove License & Update Database
+        remove_license()
+    return process.returncode
+
 
 # region Get Device Information / Get Device Backup
 
@@ -537,6 +601,7 @@ if __name__ == "__main__":
         "devicebackup",
         "deploy",
         "reset",
+        "imageslist",
     ]
     if len(sys.argv) < 2:
         print("Invalid command!")
@@ -592,3 +657,11 @@ if __name__ == "__main__":
         time_zone(input_file, output_file)
         vrf_management(input_file, output_file)
         logging_server(input_file, output_file)  # Pending multiple logging servers
+
+    elif command == "imageslist":
+        host = sys.argv[2]
+        print(host)
+        ip_address = sys.argv[3]
+        device_user = sys.argv[4]
+        device_password = sys.argv[5]
+        get_images_list(host, ip_address, device_user, device_password)

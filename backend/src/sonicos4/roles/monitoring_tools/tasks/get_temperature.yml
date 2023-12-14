@@ -1,0 +1,22 @@
+- name: Create / Check backup directory
+  file:
+    path: "{{config_path}}"
+    state: directory
+    recurse: yes
+
+- name: Get Temperature Information
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - show platform temperature
+  register: temperature_info
+
+- name: Format Temperature Information
+  set_fact:
+    formatted_temperature_info: "{{ temperature_info.stdout | join('\n') | replace(\"['\", '') }}"
+
+- name: Copy Temperature Output
+  copy:
+    content: |
+      {{ formatted_temperature_info }}
+    dest: "{{config_path}}/{{inventory_hostname}}.temperature.txt"

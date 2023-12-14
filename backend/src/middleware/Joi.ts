@@ -56,4 +56,12 @@ export const Schemas = {
       password: Joi.string(),
     }),
   },
+  imageslist: {
+    info: Joi.object({
+      host: Joi.string().required(),
+      ip: Joi.string().required(),
+      user: Joi.string().required(),
+      password: Joi.string().required(),
+    }),
+  },
 };

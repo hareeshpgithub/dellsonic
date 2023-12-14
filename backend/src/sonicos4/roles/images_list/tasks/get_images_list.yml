@@ -1,0 +1,19 @@
+- name: Configure Backup Folder
+  file:
+    path: "{{config_path}}"
+    state: directory
+    recurse: yes
+
+- name: Get Images List
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - show image list
+  register: image_info
+
+- name: Copy Output
+  copy:
+    content: |
+      {{ image_info.stdout_lines }}
+
+    dest: "{{config_path}}/{{inventory_hostname}}.aarohi.image.info.txt"

@@ -1,0 +1,5 @@
+{% if sonic_users is defined and sonic_users %}
+  {% if sonic_users.name is defined and sonic_users.name %}
+      username {{sonic_users.name}} password {{sonic_users.password}} role {{sonic_users.role}}
+  {% endif %}
+{% endif %}

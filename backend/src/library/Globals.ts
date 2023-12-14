@@ -1,11 +1,12 @@
 import WebSocket from "ws";
 export const clients: Set<WebSocket> = new Set();
 export const command = "python3";
-export const python_script = "dell.pyc";
+export const python_script = "dell.py";
 export const parser_script = "parser.py";
 export const excel_script = "excel.pyc";
 export const python_func_device_backup = "devicebackup";
 export const python_func_device_info = "deviceinfo";
+export const python_func_images_list = "imageslist";
 export const python_func_deploy_configuration = "deploy";
 export const upload_folder = "uploads";
 export const source_folder = "src";

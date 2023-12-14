@@ -1,0 +1,22 @@
+- name: Create / Check backup directory
+  file:
+    path: "{{config_path}}"
+    state: directory
+    recurse: yes
+
+- name: Get Memory Information
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - show system memory
+  register: memory_info
+
+- name: Format Memory Information
+  set_fact:
+    formatted_memory_info: "{{ memory_info.stdout | join('\n') | replace(\"['\", '') }}"
+
+- name: Copy Memory Output
+  copy:
+    content: |
+      {{ formatted_memory_info }}
+    dest: "{{config_path}}/{{inventory_hostname}}.memory.txt"

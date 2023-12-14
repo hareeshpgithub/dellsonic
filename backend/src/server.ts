@@ -71,6 +71,7 @@ const StartServer = () => {
   /** Routes */
   router.use("/api/sonic4/v1/users", allRoutes);
   router.use("/api/sonic4/v1/device", allRoutes);
+  router.use("/api/sonic4/v1/os", allRoutes);
 
   /** Health check */
   router.get("/ping", (req, res, next) =>
@@ -84,7 +85,7 @@ const StartServer = () => {
   /** Error handling */
   router.use((req, res, next) => {
     const error = new Error("API Not Found");
-    logger.error(error);
+    logger.error(error.message);
     res.status(404).json({
       message: error.message,
     });

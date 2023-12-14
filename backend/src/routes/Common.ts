@@ -7,6 +7,7 @@ import backuptoyml from "../controllers/ExportBackupYaml";
 import exceltoyml from "../controllers/ExportExcelYaml";
 import deploy from "../controllers/DeployConfiguration";
 import newtemplate from "../controllers/NewConfigurationExcel";
+import imageslist from "../controllers/ImagesList";
 
 const router = express.Router();
 
@@ -44,4 +45,11 @@ router.post(
 );
 
 router.post("/deploy", ValidateJoi(Schemas.backuptexttoyaml.info), deploy);
+
+router.post(
+  "/imageslist",
+  ValidateJoi(Schemas.imageslist.info),
+  imageslist.ImagesList
+);
+
 export = router;
