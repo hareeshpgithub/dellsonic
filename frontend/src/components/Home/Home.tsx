@@ -41,6 +41,7 @@ import DeviceInfo from "./DeviceInfo";
 import DeviceBackup from "./DeviceBackup";
 import NewConfiguration from "./NewConfiguration";
 import UploadImage from "./UploadImage";
+import SetImage from "./SetImage";
 import Deploy from "./Deploy";
 import Footer from "./Footer";
 
@@ -271,13 +272,22 @@ export default function Home() {
           {/* End */}
 
 
-
           {/* Device Backup Button */}
           <ListItemButton onClick={() => navigateToPage("update_device_image")}>
             <ListItemIcon>
               <BackupTableOutlined />
             </ListItemIcon>
-            <ListItemText primary="Update Sonic OS" />
+            <ListItemText primary="Deploy Sonic OS" />
+          </ListItemButton>
+          {/* End */}
+
+
+          {/* Device Backup Button */}
+          <ListItemButton onClick={() => navigateToPage("set_device_image")}>
+            <ListItemIcon>
+              <BackupTableOutlined />
+            </ListItemIcon>
+            <ListItemText primary="Set Sonic OS" />
           </ListItemButton>
           {/* End */}
 
@@ -354,6 +364,13 @@ export default function Home() {
         )}
         {currentPage() === "update_device_image" && (
           <UploadImage
+            location={{
+              state: state,
+            }}
+          />
+        )}
+        {currentPage() === "set_device_image" && (
+          <SetImage
             location={{
               state: state,
             }}

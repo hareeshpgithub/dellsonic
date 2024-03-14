@@ -13,6 +13,9 @@ export const APIS = {
   device_deploy: `${baseUrlV1}${versionV1}/device/deploy`,
   new_config_file: `${baseUrlV1}${versionV1}/device/newtemplate`,
   image_list: `${baseUrlV1}${versionV1}/os/imageslist`,
+  set_image: `${baseUrlV1}${versionV1}/os/setimage`,
+  deploy_image: `${baseUrlV1}${versionV1}/os/deployimage`,
+  show_progress: `${baseUrlV1}${versionV1}/os/showstatus`,
 
   timeout: 15 * 60 * 1000,
 };

@@ -52,4 +52,8 @@ router.post(
   imageslist.ImagesList
 );
 
+router.post("/setimage", imageslist.SetImage);
+router.post("/deployimage", imageslist.DeployImage);
+router.post("/showstatus", imageslist.ShowStatus);
+
 export = router;

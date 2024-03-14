@@ -1,0 +1,4 @@
+---
+- include_tasks: show_status.yml
+  vars:
+    connection: network_cli

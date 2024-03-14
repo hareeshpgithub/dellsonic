@@ -81,9 +81,12 @@ const UploadImage = (props: { location: { state: any } }) => {
   const [ip, setIp] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [imagepath, setImagepath] = useState("");
+
+
 
   const [mainScreen, setMainScreen] = useState(true);
-  const [imagesScreen, setImagesScreen] = useState(false);
+  const [imagesScreen, setImagesScreen] = useState(true);
   const [sonicVersion, setSonicVersion] = useState("");
 
   const [lockFields, setLockFields] = useState(false);
@@ -122,6 +125,8 @@ const UploadImage = (props: { location: { state: any } }) => {
       case "password":
         setPassword(e.target.value);
         break;
+      case "imagepath":
+        setImagepath(e.target.value);
     }
   };
 
@@ -136,7 +141,156 @@ const UploadImage = (props: { location: { state: any } }) => {
     // setLockFields(true);
   }
 
+  const handleProgressClick = (e: any) => {
+    e.preventDefault();
+    axios
+      .post(
+        APIS.show_progress,
+        {
+          host: hostname,
+          ip: ip,
+          user: userName,
+          password: password,
+          image: imagepath
+        },
+        {
+          timeout: APIS.timeout,
+        }
+      )
+      .then((response) => {
+        setButtonState(false);
+        setLoading(false);
+        if (response && (response.status === 200 || response.status === 201)) {
+          const data = response.data;
 
+          setWebsocketFlag(false);
+          setFlag(true);
+
+          setMessage("Successful!");
+
+          setImagesScreen(true);
+          const textBasedString = data[0].join('\n');
+          console.log(data)
+          console.log(textBasedString)
+          alert(textBasedString);
+
+          setTimeout(() => {
+            setMessage("");
+            setImagesScreen(true);
+          }, 2000);
+        } else {
+          setWebsocketFlag(false);
+          setFlag(false);
+          setLoading(false);
+          setMessage("some error occurred");
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "error.txt");
+          document.body.appendChild(link);
+          link.click();
+          setTimeout(() => {
+            setMessage("");
+          }, 2000);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        let msg =
+          error.response?.data?.detail ||
+          error.message ||
+          error ||
+          "some error occurred";
+        setButtonState(false);
+        setLoading(false);
+        setWebsocketFlag(false);
+        setFlag(false);
+        setMessage(msg);
+        const url = window.URL.createObjectURL(
+          new Blob([error.response?.data])
+        );
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "error.txt");
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
+      });
+  }
+
+  const handleDeployClick = (e: any) => {
+    e.preventDefault();
+    axios
+      .post(
+        APIS.deploy_image,
+        {
+          host: hostname,
+          ip: ip,
+          user: userName,
+          password: password,
+          image: imagepath
+        },
+        {
+          timeout: APIS.timeout,
+        }
+      )
+      .then((response) => {
+        setButtonState(false);
+        setLoading(false);
+        if (response && (response.status === 200 || response.status === 201)) {
+
+          setWebsocketFlag(false);
+          setFlag(true);
+          setMessage("Successful!");
+          setImagesScreen(true);
+          alert("This will take 10-15 Min, please check Set Sonic after some time")
+          setTimeout(() => {
+            setMessage("");
+            setImagesScreen(true);
+          }, 2000);
+        } else {
+          setWebsocketFlag(false);
+          setFlag(false);
+          setLoading(false);
+          setMessage("some error occurred");
+          const url = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "error.txt");
+          document.body.appendChild(link);
+          link.click();
+          setTimeout(() => {
+            setMessage("");
+          }, 2000);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        let msg =
+          error.response?.data?.detail ||
+          error.message ||
+          error ||
+          "some error occurred";
+        setButtonState(false);
+        setLoading(false);
+        setWebsocketFlag(false);
+        setFlag(false);
+        setMessage(msg);
+        const url = window.URL.createObjectURL(
+          new Blob([error.response?.data])
+        );
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "error.txt");
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
+      });
+  }
 
   const handleClick = (e: any) => {
     e.preventDefault();
@@ -309,6 +463,20 @@ const UploadImage = (props: { location: { state: any } }) => {
               onChange={handleChange}
               InputProps={{ readOnly: lockFields }}
             />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="imagepath"
+              label="Image Path"
+              name="imagepath"
+              type="text"
+              autoComplete=""
+              value={imagepath}
+              onChange={handleChange}
+              InputProps={{ readOnly: lockFields }}
+            />
           </Box>
           {!lockFields && (
             <Box mt={2}>
@@ -316,50 +484,27 @@ const UploadImage = (props: { location: { state: any } }) => {
                 variant="contained"
                 style={{ display: "block", textAlign: "center" }}
                 fullWidth
-                onClick={handleClick}
+                onClick={handleDeployClick}
                 disabled={buttonState}
                 sx={{ textTransform: "none" }}
               >
-                {loading && (
-                  <CircularProgress
-                    size={30}
-                    sx={{
-                      color: green,
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      marginTop: "-12px",
-                      marginLeft: "-12px",
-                    }}
-                  />
-                )}
-                <Typography variant="h6">Next</Typography>
+                <Typography variant="h6">Deploy</Typography>
               </Button>
             </Box>
-          )}
 
-          <div style={{ display: imagesScreen ? 'block' : 'block' }}>
-            <Box mt={1}>
-              <Select
-                labelId="sonicVersion"
-                id="sonicVersion"
-                value={sonicVersion}
-                label="sonicVersion"
-                fullWidth
-                onChange={selectSonicVersion}
-                style={{ color: 'white' }}
-              >
-                <MenuItem value="" disabled>
-                  Select Version
-                </MenuItem>
-                {availableVersions.map((version) => (
-                  <MenuItem key={version} value={version}>
-                    {version}
-                  </MenuItem>
-                ))}
-              </Select>
-            </Box>
-          </div>
+          )}
+          <Box mt={2}>
+            <Button
+              variant="contained"
+              style={{ display: imagesScreen ? 'block' : 'none', textAlign: "center" }}
+              fullWidth
+              onClick={handleProgressClick}
+              disabled={buttonState}
+              sx={{ textTransform: "none" }}
+            >
+              <Typography variant="h6">Check Progress</Typography>
+            </Button>
+          </Box>
 
           <Box mt={1}>
             {websocketFlag && (

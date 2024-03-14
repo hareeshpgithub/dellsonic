@@ -1,0 +1,11 @@
+- name: Configure Dell SonicOS Switch
+  hosts: inventory
+  gather_facts: False
+  connection: httpapi
+  collections:
+    - dellemc.enterprise_sonic
+
+  tasks:
+    - name: Deploy Image
+      include_role:
+        name: deploy_image

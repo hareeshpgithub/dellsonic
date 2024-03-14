@@ -1,7 +1,19 @@
 {
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#023148",
-        "titleBar.activeBackground": "#024465",
-        "titleBar.activeForeground": "#F5FCFF"
-    }
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#023148",
+    "titleBar.activeBackground": "#024465",
+    "titleBar.activeForeground": "#F5FCFF"
+  },
+  "cSpell.words": [
+    "backuptexttoyaml",
+    "backuptoyml",
+    "deviceconfig",
+    "deviceinfo",
+    "exceltoyml",
+    "imagepath",
+    "imageslist",
+    "newtemplate",
+    "setimage",
+    "sonicos"
+  ]
 }

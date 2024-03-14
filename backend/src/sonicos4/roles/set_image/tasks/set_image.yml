@@ -1,0 +1,14 @@
+- name: Set Image and Reboot Switch
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - "image set-default {{ image_name }}"
+      - "reboot"
+  register: set_image_result
+
+- name: Copy Output
+  copy:
+    content: |
+      {{ set_image_result.stdout_lines }}
+
+    dest: "{{config_path}}/{{inventory_hostname}}.aarohi.image.info.txt"

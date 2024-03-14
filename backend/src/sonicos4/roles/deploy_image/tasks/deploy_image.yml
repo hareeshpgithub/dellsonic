@@ -1,0 +1,13 @@
+- name: Deploy Image
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - "image install {{ image_name }}"
+  register: deploy_image_result
+
+- name: Copy Output
+  copy:
+    content: |
+      {{ deploy_image_result.stdout_lines }}
+
+    dest: "{{config_path}}/{{inventory_hostname}}.aarohi.image.info.txt"

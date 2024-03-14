@@ -1,0 +1,13 @@
+- name: Show Image Progress
+  connection: network_cli
+  dellemc.enterprise_sonic.sonic_command:
+    commands:
+      - "show image status"
+  register: show_status
+
+- name: Copy Output
+  copy:
+    content: |
+      {{ show_status.stdout_lines }}
+
+    dest: "{{config_path}}/{{inventory_hostname}}.aarohi.image.info.txt"

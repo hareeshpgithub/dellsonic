@@ -1,0 +1,7 @@
+backend/node_modules/
+backend/build/
+backend/build-obfuscated/
+frontend/node_modules/
+backend/uploads/
+backend/src/sonicos4/host_vars/
+backend/src/sonicos4/output/
