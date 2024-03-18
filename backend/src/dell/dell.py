@@ -270,6 +270,69 @@ def show_status(hostname, ip_address, device_user, device_password):
     return process.returncode
 
 
+def remote_command(hostname, ip_address, device_user, device_password, command):
+    change_working_directory_sonicos4()
+
+    extra_vars = f"{ansible_user}{device_user} {ansible_password}{device_password} remote_command='{command}'"
+    ansible_file = "remote_command.yml"
+
+    ansible_command = [
+        ansible_playbook,
+        ansible_inventory_argument,
+        ansible_hosts_file,
+        ansible_extra_vars,
+        extra_vars,
+        ansible_file,
+        license_key_command,
+        verbose,
+    ]
+
+    print(ansible_command)
+
+    # Create hosts file
+    create_hosts_file(hostname, ip_address)
+
+    # Remove Old License If Exists
+    remove_license()
+
+    # Create License Key
+    create_license()
+
+    process = subprocess.Popen(
+        ansible_command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+    )
+
+    try:
+        for line in iter(process.stdout.readline, b""):
+            decoded_line = line.decode().strip()
+            cleaned_line = re.sub(log_file_clean, "", decoded_line)
+            print(cleaned_line, flush=True)
+        process.wait()
+
+        # Remove License & Update Database
+        remove_license()
+
+        output_file_name = f"{hostname}.aarohi.image.info.txt"
+        output_file_path = os.path.join(output_folder, output_file_name)
+
+        with open(output_file_path, "r") as device_content:
+            output = device_content.read()
+
+    except KeyboardInterrupt:
+        process.terminate()
+        process.wait()
+
+        # Remove License & Update Database
+        remove_license()
+
+    except Exception as e:
+        # log += str(e)
+        print("error" + e)
+        # Remove License & Update Database
+        remove_license()
+    return process.returncode
+
+
 def deploy_image(hostname, ip_address, device_user, device_password, image):
     # Change working Directory
     change_working_directory_sonicos4()
@@ -799,6 +862,7 @@ if __name__ == "__main__":
         "setimage",
         "deployimage",
         "showstatus",
+        "remotecommand",
     ]
     if len(sys.argv) < 2:
         print("Invalid command!")
@@ -888,3 +952,12 @@ if __name__ == "__main__":
         device_user = sys.argv[4]
         device_password = sys.argv[5]
         show_status(host, ip_address, device_user, device_password)
+
+    elif command == "remotecommand":
+        host = sys.argv[2]
+        print(host)
+        ip_address = sys.argv[3]
+        device_user = sys.argv[4]
+        device_password = sys.argv[5]
+        command = " ".join(sys.argv[6:])
+        remote_command(host, ip_address, device_user, device_password, command)

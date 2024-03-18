@@ -42,6 +42,7 @@ import DeviceBackup from "./DeviceBackup";
 import NewConfiguration from "./NewConfiguration";
 import UploadImage from "./UploadImage";
 import SetImage from "./SetImage";
+import Remote from "./Remote";
 import Deploy from "./Deploy";
 import Footer from "./Footer";
 
@@ -292,6 +293,16 @@ export default function Home() {
           {/* End */}
 
 
+          {/* Device Backup Button */}
+          <ListItemButton onClick={() => navigateToPage("remote_execution")}>
+            <ListItemIcon>
+              <BackupTableOutlined />
+            </ListItemIcon>
+            <ListItemText primary="Remote Execution" />
+          </ListItemButton>
+          {/* End */}
+
+
           <Divider />
           {/* <ListItemButton>
             <ListItemIcon>
@@ -371,6 +382,13 @@ export default function Home() {
         )}
         {currentPage() === "set_device_image" && (
           <SetImage
+            location={{
+              state: state,
+            }}
+          />
+        )}
+        {currentPage() === "remote_execution" && (
+          <Remote
             location={{
               state: state,
             }}

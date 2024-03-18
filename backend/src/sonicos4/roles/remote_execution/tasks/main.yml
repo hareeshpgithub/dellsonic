@@ -3,5 +3,17 @@
   dellemc.enterprise_sonic.sonic_command:
     commands:
       - "configure terminal"
-      - "interface-naming standard"
+      - "{{ remote_command }}"
       - "exit"
+  register: remote_execute
+
+- name: Format Remote Execute
+  set_fact:
+    formatted_remote_execute: "{{ remote_execute.stdout | join('\n') | replace(\"['\", '') }}"
+
+- name: Copy Output
+  copy:
+    content: |
+      {{ formatted_remote_execute }}
+
+    dest: "{{config_path}}/{{inventory_hostname}}.aarohi.image.info.txt"

@@ -9,6 +9,7 @@ export const python_func_device_info = "deviceinfo";
 export const python_func_images_list = "imageslist";
 export const python_func_set_image = "setimage";
 export const python_func_deploy_image = "deployimage";
+export const python_func_remote_command = "remotecommand";
 export const python_func_deploy_configuration = "deploy";
 export const upload_folder = "uploads";
 export const source_folder = "src";

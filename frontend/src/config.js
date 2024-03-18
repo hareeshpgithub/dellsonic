@@ -13,6 +13,8 @@ export const APIS = {
   device_deploy: `${baseUrlV1}${versionV1}/device/deploy`,
   new_config_file: `${baseUrlV1}${versionV1}/device/newtemplate`,
   image_list: `${baseUrlV1}${versionV1}/os/imageslist`,
+  remote_execute: `${baseUrlV1}${versionV1}/os/remoteexecute`,
+  remote_configure: `${baseUrlV1}${versionV1}/os/remoteconfigure`,
   set_image: `${baseUrlV1}${versionV1}/os/setimage`,
   deploy_image: `${baseUrlV1}${versionV1}/os/deployimage`,
   show_progress: `${baseUrlV1}${versionV1}/os/showstatus`,

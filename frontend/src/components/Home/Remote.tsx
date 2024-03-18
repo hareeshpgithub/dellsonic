@@ -84,10 +84,11 @@ const SetImage = (props: { location: { state: any } }) => {
 
     const [mainScreen, setMainScreen] = useState(true);
     const [imagesScreen, setImagesScreen] = useState(false);
-    const [setScreen, setSetScreen] = useState(false);
-
     const [sonicVersion, setSonicVersion] = useState("");
     const [currentVersion, setCurrentVersion] = useState("");
+    const [remotecommand, setRemoteCommand] = useState("");
+
+
 
     const [lockFields, setLockFields] = useState(false);
     const [availableVersions, setAvailableVersions] = useState([]);
@@ -109,11 +110,6 @@ const SetImage = (props: { location: { state: any } }) => {
 
     const selectSonicVersion = (e: any) => {
         setSonicVersion(e.target.value)
-        if (e.target.value === currentVersion) {
-            setSetScreen(false)
-        } else {
-            setSetScreen(true)
-        }
     }
 
     const handleChange = (e: any) => {
@@ -129,6 +125,9 @@ const SetImage = (props: { location: { state: any } }) => {
                 break;
             case "password":
                 setPassword(e.target.value);
+                break;
+            case "remotecommand":
+                setRemoteCommand(e.target.value);
                 break;
         }
     };
@@ -252,12 +251,13 @@ const SetImage = (props: { location: { state: any } }) => {
 
         axios
             .post(
-                APIS.image_list,
+                APIS.remote_execute,
                 {
                     host: hostname,
                     ip: ip,
                     user: userName,
                     password: password,
+                    remotecommand: remotecommand,
                 },
                 {
                     timeout: APIS.timeout,
@@ -268,16 +268,21 @@ const SetImage = (props: { location: { state: any } }) => {
                 setLoading(false);
                 if (response && (response.status === 200 || response.status === 201)) {
                     const data = response.data;
-                    const availableIndex = data[0].indexOf('Available: ');
-                    const availableVersionsFromApi = data[0].slice(availableIndex + 1).map((version: any) => version.trim());
 
                     const currentValue: string = data[0][0].split(": ")[1];
                     setCurrentVersion(currentValue)
 
-                    setAvailableVersions(availableVersionsFromApi);
                     setWebsocketFlag(false);
                     setFlag(true);
                     setMessage("Executed successfully!");
+
+                    const url = window.URL.createObjectURL(new Blob([response.data]));
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.setAttribute("download", hostname + ".txt");
+                    document.body.appendChild(link);
+                    link.click();
+
                     setTimeout(() => {
                         setMessage("");
                         setImagesScreen(true);
@@ -334,7 +339,7 @@ const SetImage = (props: { location: { state: any } }) => {
           <CloudUploadOutlined />
         </Avatar> */}
                 <Typography component="h1" variant="h5">
-                    Set Sonic Image
+                    Remote Execute
                 </Typography>
                 <form className={classes.form} style={{ display: mainScreen ? 'block' : 'none' }}>
                     <Box mb={2}>
@@ -391,6 +396,22 @@ const SetImage = (props: { location: { state: any } }) => {
                             onChange={handleChange}
                             InputProps={{ readOnly: lockFields }}
                         />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="remotecommand"
+                            label="Command"
+                            name="remotecommand"
+                            type="text"
+                            autoComplete=""
+                            value={remotecommand}
+                            onChange={handleChange}
+                            InputProps={{ readOnly: lockFields }}
+                            multiline  // Enable multiline
+                            rows={5}   // Set number of rows
+                        />
                     </Box>
                     {!lockFields && (
                         <Box mt={2}>
@@ -415,61 +436,10 @@ const SetImage = (props: { location: { state: any } }) => {
                                         }}
                                     />
                                 )}
-                                <Typography variant="h6">Next</Typography>
+                                <Typography variant="h6">Execute</Typography>
                             </Button>
                         </Box>
                     )}
-
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="currentVersion"
-                        label="Current Version"
-                        name="currentVersion"
-                        autoComplete=""
-                        value={currentVersion}
-                        InputProps={{ readOnly: true }}
-                        style={{ display: imagesScreen ? 'block' : 'none' }}
-                    />
-
-                    <div style={{ display: imagesScreen ? 'block' : 'none' }}>
-                        <Box mt={1}>
-                            <Select
-                                labelId="sonicVersion"
-                                id="sonicVersion"
-                                value={sonicVersion}
-                                label="sonicVersion"
-                                fullWidth
-                                onChange={selectSonicVersion}
-                                style={{ color: 'white' }}
-                            >
-                                <MenuItem value="" disabled>
-                                    Select Version
-                                </MenuItem>
-                                {availableVersions.map((version) => (
-                                    <MenuItem key={version} value={version}>
-                                        {version}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </Box>
-
-                        <Box mt={2}>
-                            <Button
-                                variant="contained"
-                                style={{ display: setScreen ? 'block' : 'none', textAlign: "center" }}
-                                fullWidth
-                                onClick={handleSetClick}
-                                disabled={buttonState}
-                                sx={{ textTransform: "none" }}
-                            >
-                                <Typography variant="h6">Set</Typography>
-                            </Button>
-                        </Box>
-                    </div>
-
                     <Box mt={1}>
                         {websocketFlag && (
                             <h3 className={classes.success}>{websocketMessage}</h3>

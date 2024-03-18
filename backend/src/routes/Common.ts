@@ -55,5 +55,6 @@ router.post(
 router.post("/setimage", imageslist.SetImage);
 router.post("/deployimage", imageslist.DeployImage);
 router.post("/showstatus", imageslist.ShowStatus);
+router.post("/RemoteExecute", imageslist.RemoteExecute);
 
 export = router;
