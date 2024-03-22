@@ -221,7 +221,7 @@ const SetImage = (props: { location: { state: any } }) => {
 
     const handleClick = (e: any) => {
         e.preventDefault();
-        setNextScreen(true)
+
         if (!hostname) {
             setFlag(false);
             setMessage("Please Enter Host Name");
@@ -253,6 +253,7 @@ const SetImage = (props: { location: { state: any } }) => {
         }
         setButtonState(true);
         setLoading(true);
+        setNextScreen(true)
 
         axios
             .post(
@@ -270,6 +271,7 @@ const SetImage = (props: { location: { state: any } }) => {
             .then((response) => {
                 setButtonState(false);
                 setLoading(false);
+                setNextScreen(false)
                 if (response && (response.status === 200 || response.status === 201)) {
                     const data = response.data;
                     const availableIndex = data[0].indexOf('Available: ');
@@ -293,6 +295,7 @@ const SetImage = (props: { location: { state: any } }) => {
                     setFlag(false);
                     setLoading(false);
                     setMessage("some error occurred");
+                    setNextScreen(false)
                     const url = window.URL.createObjectURL(new Blob([response.data]));
                     const link = document.createElement("a");
                     link.href = url;
@@ -306,6 +309,7 @@ const SetImage = (props: { location: { state: any } }) => {
             })
             .catch((error) => {
                 console.log(error);
+                setNextScreen(false)
                 let msg =
                     error.response?.data?.detail ||
                     error.message ||
