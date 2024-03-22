@@ -4,7 +4,7 @@
     commands:
       - "configure terminal"
       - "{{ remote_command }}"
-      - "exit"
+      # - "exit"
   register: remote_execute
 
 - name: Format Remote Execute

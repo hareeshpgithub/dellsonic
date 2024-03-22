@@ -272,6 +272,7 @@ def show_status(hostname, ip_address, device_user, device_password):
 
 def remote_command(hostname, ip_address, device_user, device_password, command):
     change_working_directory_sonicos4()
+    log = ""
 
     extra_vars = f"{ansible_user}{device_user} {ansible_password}{device_password} remote_command='{command}'"
     ansible_file = "remote_command.yml"
@@ -307,7 +308,9 @@ def remote_command(hostname, ip_address, device_user, device_password, command):
             decoded_line = line.decode().strip()
             cleaned_line = re.sub(log_file_clean, "", decoded_line)
             print(cleaned_line, flush=True)
+            log += cleaned_line + "\n"
         process.wait()
+        print("Process code ======================", process.returncode)
 
         # Remove License & Update Database
         remove_license()
@@ -319,17 +322,28 @@ def remote_command(hostname, ip_address, device_user, device_password, command):
             output = device_content.read()
 
     except KeyboardInterrupt:
+        print(">>>>>>>>>>>>>>>>>>")
+        print(process)
         process.terminate()
         process.wait()
 
         # Remove License & Update Database
         remove_license()
+        print(KeyboardInterrupt)
 
     except Exception as e:
+        print(">>>>>>>>>>>>>>>>>>")
+        print(process)
         # log += str(e)
         print("error" + e)
         # Remove License & Update Database
         remove_license()
+        print(e)
+
+    if process.returncode != 0:
+        with open(os.path.join(output_folder, "error.log"), "w") as error_log:
+            error_log.write(log)
+    print("Process Code <<<<<<<<<<<<<<<<<,", process.returncode)
     return process.returncode
 
 
@@ -464,6 +478,7 @@ def set_image(hostname, ip_address, device_user, device_password, image):
 def get_images_list(hostname, ip_address, device_user, device_password):
     # Change working Directory
     change_working_directory_sonicos4()
+    log = ""
 
     extra_vars = f"{ansible_user}{device_user} {ansible_password}{device_password}"
     ansible_file = ansible_image_list_yml
@@ -497,6 +512,7 @@ def get_images_list(hostname, ip_address, device_user, device_password):
             decoded_line = line.decode().strip()
             cleaned_line = re.sub(log_file_clean, "", decoded_line)
             print(cleaned_line, flush=True)
+            log += cleaned_line + "\n"
         process.wait()
 
         # Remove License & Update Database
@@ -520,6 +536,10 @@ def get_images_list(hostname, ip_address, device_user, device_password):
         print("error" + e)
         # Remove License & Update Database
         remove_license()
+    print("process.returncode", process.returncode)
+    if process.returncode != 0:
+        with open(os.path.join(output_folder, "error.log"), "w") as error_log:
+            error_log.write(log)
     return process.returncode
 
 
@@ -925,7 +945,8 @@ if __name__ == "__main__":
         ip_address = sys.argv[3]
         device_user = sys.argv[4]
         device_password = sys.argv[5]
-        get_images_list(host, ip_address, device_user, device_password)
+        exit_code = get_images_list(host, ip_address, device_user, device_password)
+        sys.exit(exit_code)
 
     elif command == "setimage":
         host = sys.argv[2]
@@ -934,7 +955,8 @@ if __name__ == "__main__":
         device_user = sys.argv[4]
         device_password = sys.argv[5]
         image = sys.argv[6]
-        set_image(host, ip_address, device_user, device_password, image)
+        exit_code = set_image(host, ip_address, device_user, device_password, image)
+        sys.exit(exit_code)
 
     elif command == "deployimage":
         host = sys.argv[2]
@@ -943,7 +965,8 @@ if __name__ == "__main__":
         device_user = sys.argv[4]
         device_password = sys.argv[5]
         image = sys.argv[6]
-        deploy_image(host, ip_address, device_user, device_password, image)
+        exit_code = deploy_image(host, ip_address, device_user, device_password, image)
+        sys.exit(exit_code)
 
     elif command == "showstatus":
         host = sys.argv[2]
@@ -951,13 +974,16 @@ if __name__ == "__main__":
         ip_address = sys.argv[3]
         device_user = sys.argv[4]
         device_password = sys.argv[5]
-        show_status(host, ip_address, device_user, device_password)
+        exit_code = show_status(host, ip_address, device_user, device_password)
+        sys.exit(exit_code)
 
     elif command == "remotecommand":
         host = sys.argv[2]
-        print(host)
         ip_address = sys.argv[3]
         device_user = sys.argv[4]
         device_password = sys.argv[5]
         command = " ".join(sys.argv[6:])
-        remote_command(host, ip_address, device_user, device_password, command)
+        exit_code = remote_command(
+            host, ip_address, device_user, device_password, command
+        )
+        sys.exit(exit_code)

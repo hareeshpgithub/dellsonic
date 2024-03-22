@@ -86,6 +86,8 @@ const SetImage = (props: { location: { state: any } }) => {
     const [imagesScreen, setImagesScreen] = useState(false);
     const [setScreen, setSetScreen] = useState(false);
 
+    const [nextScreen, setNextScreen] = useState(false);
+
     const [sonicVersion, setSonicVersion] = useState("");
     const [currentVersion, setCurrentVersion] = useState("");
 
@@ -146,6 +148,7 @@ const SetImage = (props: { location: { state: any } }) => {
 
     const handleSetClick = (e: any) => {
         e.preventDefault();
+
         axios
             .post(
                 APIS.set_image,
@@ -218,6 +221,7 @@ const SetImage = (props: { location: { state: any } }) => {
 
     const handleClick = (e: any) => {
         e.preventDefault();
+        setNextScreen(true)
         if (!hostname) {
             setFlag(false);
             setMessage("Please Enter Host Name");
@@ -396,10 +400,10 @@ const SetImage = (props: { location: { state: any } }) => {
                         <Box mt={2}>
                             <Button
                                 variant="contained"
-                                style={{ display: "block", textAlign: "center" }}
+                                style={{ textAlign: "center" }}
                                 fullWidth
                                 onClick={handleClick}
-                                disabled={buttonState}
+                                disabled={nextScreen}
                                 sx={{ textTransform: "none" }}
                             >
                                 {loading && (
