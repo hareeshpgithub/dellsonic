@@ -148,7 +148,8 @@ const SetImage = (props: { location: { state: any } }) => {
 
     const handleSetClick = (e: any) => {
         e.preventDefault();
-
+        setButtonState(true)
+        setNextScreen(true)
         axios
             .post(
                 APIS.set_image,
@@ -165,6 +166,7 @@ const SetImage = (props: { location: { state: any } }) => {
             )
             .then((response) => {
                 setButtonState(false);
+                setNextScreen(false)
                 setLoading(false);
                 if (response && (response.status === 200 || response.status === 201)) {
 
@@ -180,6 +182,8 @@ const SetImage = (props: { location: { state: any } }) => {
                     setWebsocketFlag(false);
                     setFlag(false);
                     setLoading(false);
+                    setNextScreen(false);
+                    setButtonState(false);
                     setMessage("some error occurred");
                     const url = window.URL.createObjectURL(new Blob([response.data]));
                     const link = document.createElement("a");
@@ -200,6 +204,7 @@ const SetImage = (props: { location: { state: any } }) => {
                     error ||
                     "some error occurred";
                 setButtonState(false);
+                setNextScreen(false)
                 setLoading(false);
                 setWebsocketFlag(false);
                 setFlag(false);
